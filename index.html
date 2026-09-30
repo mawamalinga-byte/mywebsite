@@ -3,1335 +3,1125 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Mawa Academy | Free School Notes</title>
-
+<title>Mawa Academy | Form 5 Notes</title>
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    scroll-behavior: smooth;
-}
-
-:root {
-    --bg: #f5f7fb;
-    --card: #ffffff;
-    --text: #172033;
-    --muted: #667085;
-    --primary: #2563eb;
-    --primary-dark: #1d4ed8;
-    --border: #e5e7eb;
-}
-
-body.dark {
-    --bg: #0f172a;
-    --card: #1e293b;
-    --text: #f8fafc;
-    --muted: #cbd5e1;
-    --border: #334155;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    transition: .3s;
-}
-
-/* NAVIGATION */
-
-nav {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: #0f172a;
-    color: white;
-    padding: 15px 6%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-size: 23px;
-    font-weight: bold;
-}
-
-.logo span {
-    color: #38bdf8;
-}
-
-.nav-buttons {
-    display: flex;
-    gap: 8px;
-}
-
-.nav-buttons button {
-    border: 0;
-    background: transparent;
-    color: white;
-    font-size: 22px;
-    cursor: pointer;
-}
-
-#menu {
-    display: none;
-}
-
-/* HERO */
-
-.hero {
-    background: linear-gradient(135deg, #172554, #2563eb);
-    color: white;
-    text-align: center;
-    padding: 90px 20px;
-}
-
-.hero h1 {
-    font-size: clamp(38px, 8vw, 70px);
-    margin-bottom: 15px;
-}
-
-.hero h1 span {
-    color: #7dd3fc;
-}
-
-.hero p {
-    max-width: 700px;
-    margin: auto;
-    color: #dbeafe;
-    font-size: 19px;
-}
-
-.hero-buttons {
-    margin-top: 30px;
-}
-
-.btn {
-    display: inline-block;
-    padding: 12px 20px;
-    border-radius: 8px;
-    background: #38bdf8;
-    color: #082f49;
-    text-decoration: none;
-    font-weight: bold;
-    border: 0;
-    cursor: pointer;
-}
-
-.btn:hover {
-    background: #7dd3fc;
-}
-
-/* SEARCH */
-
-.search-area {
-    max-width: 850px;
-    margin: -30px auto 50px;
-    padding: 0 20px;
-}
-
-.search-box {
-    width: 100%;
-    padding: 17px;
-    border-radius: 12px;
-    border: 2px solid var(--border);
-    background: var(--card);
-    color: var(--text);
-    font-size: 16px;
-    outline: none;
-}
-
-/* SECTIONS */
-
-section {
-    padding: 70px 6%;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 34px;
-    margin-bottom: 15px;
-}
-
-.section-description {
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto 40px;
-    color: var(--muted);
-}
-
-/* SUBJECTS */
-
-.subject-grid {
-    display: grid;
-    grid-template-columns:
-        repeat(auto-fit, minmax(230px, 1fr));
-    gap: 22px;
-}
-
-.subject {
-    background: var(--card);
-    border: 1px solid var(--border);
-    padding: 25px;
-    border-radius: 16px;
-    cursor: pointer;
-    transition: .25s;
-}
-
-.subject:hover {
-    transform: translateY(-6px);
-    border-color: var(--primary);
-}
-
-.subject-icon {
-    font-size: 38px;
-    margin-bottom: 12px;
-}
-
-.subject h3 {
-    margin-bottom: 8px;
-}
-
-.subject p {
-    color: var(--muted);
-    font-size: 14px;
-}
-
-/* TOPICS */
-
-#topicSection {
-    display: none;
-}
-
-.topic-grid {
-    display: grid;
-    grid-template-columns:
-        repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.topic {
-    background: var(--card);
-    border: 1px solid var(--border);
-    padding: 22px;
-    border-radius: 14px;
-}
-
-.topic h3 {
-    margin-bottom: 10px;
-    color: var(--primary);
-}
-
-.topic p {
-    color: var(--muted);
-    margin-bottom: 15px;
-}
-
-/* NOTES */
-
-#notesSection {
-    display: none;
-}
-
-.note {
-    max-width: 900px;
-    margin: auto;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 15px;
-    padding: 30px;
-}
-
-.note h2 {
-    color: var(--primary);
-    margin-bottom: 20px;
-}
-
-.note h3 {
-    margin: 25px 0 10px;
-}
-
-.note p {
-    color: var(--muted);
-    margin-bottom: 12px;
-    line-height: 1.7;
-}
-
-.note ul {
-    margin-left: 25px;
-    color: var(--muted);
-    line-height: 1.8;
-}
-
-.summary {
-    margin-top: 25px;
-    padding: 20px;
-    background: rgba(37,99,235,.08);
-    border-left: 5px solid var(--primary);
-    border-radius: 8px;
-}
-
-.back {
-    margin-bottom: 25px;
-}
-
-/* FOOTER */
-
-footer {
-    background: #020617;
-    color: #94a3b8;
-    text-align: center;
-    padding: 30px 20px;
-}
-
-/* MOBILE */
-
-@media(max-width:700px) {
-
-    #menu {
-        display: block;
-    }
-
-    nav {
-        padding: 15px 5%;
-    }
-
-    .hero {
-        padding: 70px 20px;
-    }
-
-    section {
-        padding: 55px 5%;
-    }
-
-    .section-title {
-        font-size: 29px;
-    }
-}
+*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
+:root{--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#667085;--primary:#2563eb;--border:#e5e7eb}
+body.dark{--bg:#0f172a;--card:#1e293b;--text:#f8fafc;--muted:#cbd5e1;--border:#334155}
+body{font-family:Arial,sans-serif;background:var(--bg);color:var(--text);transition:.25s;line-height:1.6}
+nav{position:sticky;top:0;z-index:10;background:#0f172a;color:white;padding:14px 6%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:22px;font-weight:bold}.logo span{color:#38bdf8}
+.nav-buttons button{border:0;background:transparent;color:white;font-size:22px;cursor:pointer;margin-left:10px}
+.hero{background:linear-gradient(135deg,#172554,#2563eb);color:white;text-align:center;padding:70px 20px}
+.hero h1{font-size:clamp(36px,8vw,64px)}.hero h1 span{color:#7dd3fc}
+.hero p{max-width:760px;margin:12px auto;color:#dbeafe}
+.search{max-width:900px;margin:-25px auto 20px;padding:0 20px}
+.search input{width:100%;padding:16px;border:2px solid var(--border);border-radius:12px;background:var(--card);color:var(--text);font-size:16px}
+section{padding:55px 6%}.title{text-align:center;font-size:32px;margin-bottom:10px}
+.desc{text-align:center;color:var(--muted);max-width:760px;margin:0 auto 30px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:15px;padding:22px;transition:.2s}
+.card:hover{transform:translateY(-4px);border-color:var(--primary)}
+.icon{font-size:36px}.card h3{margin:8px 0}.muted{color:var(--muted);font-size:14px}
+.btn{border:0;border-radius:8px;padding:10px 15px;background:#38bdf8;color:#082f49;font-weight:bold;cursor:pointer;margin-top:12px}
+.back{margin-bottom:20px}
+.note{max-width:900px;margin:auto;background:var(--card);border:1px solid var(--border);border-radius:15px;padding:28px}
+.note h2{color:var(--primary);margin-bottom:10px}.note h3{margin-top:22px}
+.summary{margin-top:20px;padding:18px;border-left:5px solid var(--primary);background:rgba(37,99,235,.08);border-radius:8px}
+.q{margin-top:12px;padding:12px;border:1px solid var(--border);border-radius:8px}
+footer{background:#020617;color:#94a3b8;text-align:center;padding:28px}
+.hidden{display:none!important}
+@media(max-width:700px){section{padding:45px 5%}}
 </style>
 </head>
-
 <body>
-
-<!-- NAVIGATION -->
-
 <nav>
-
-    <div class="logo">
-        Mawa<span>Academy</span>
-    </div>
-
-    <div class="nav-buttons">
-        <button id="theme">🌙</button>
-        <button id="menu">☰</button>
-    </div>
-
+<div class="logo">Mawa<span>Academy</span></div>
+<div class="nav-buttons"><button id="theme">🌙</button></div>
 </nav>
 
-
-<!-- HERO -->
-
 <header class="hero">
-
-    <h1>Welcome to <span>Mawa Academy</span></h1>
-
-    <p>
-        Free school notes, summaries and revision material
-        designed to help learners understand their subjects.
-    </p>
-
-    <div class="hero-buttons">
-        <a href="#subjects" class="btn">
-            Start Learning
-        </a>
-    </div>
-
+<h1>Form 5 <span>Learning Hub</span></h1>
+<p>Free learner-friendly revision material for eight Form 5 subjects, organised around the syllabuses you provided.</p>
 </header>
 
-
-<!-- SEARCH -->
-
-<div class="search-area">
-
-    <input
-        id="search"
-        class="search-box"
-        type="search"
-        placeholder="Search subjects or topics..."
-    >
-
-</div>
-
-
-<!-- SUBJECTS -->
+<div class="search"><input id="search" type="search" placeholder="Search a subject or topic..."></div>
 
 <section id="subjects">
-
-    <h2 class="section-title">
-        📚 School Subjects
-    </h2>
-
-    <p class="section-description">
-        Choose a subject to explore its topics, notes and summaries.
-    </p>
-
-    <div id="subjectGrid" class="subject-grid"></div>
-
+<h2 class="title">📚 Form 5 Subjects</h2>
+<p class="desc">Choose a subject to see its syllabus-based topics.</p>
+<div id="subjectGrid" class="grid"></div>
 </section>
 
-
-<!-- TOPICS -->
-
-<section id="topicSection">
-
-    <button class="btn back" onclick="showSubjects()">
-        ← Back to Subjects
-    </button>
-
-    <h2 id="topicTitle" class="section-title"></h2>
-
-    <p id="topicDescription" class="section-description"></p>
-
-    <div id="topicGrid" class="topic-grid"></div>
-
+<section id="topics" class="hidden">
+<button class="btn back" onclick="showSubjects()">← Subjects</button>
+<h2 id="topicTitle" class="title"></h2>
+<p id="topicDesc" class="desc"></p>
+<div id="topicGrid" class="grid"></div>
 </section>
 
-
-<!-- NOTES -->
-
-<section id="notesSection">
-
-    <button class="btn back" onclick="showTopics()">
-        ← Back to Topics
-    </button>
-
-    <div id="noteContainer" class="note"></div>
-
+<section id="notes" class="hidden">
+<button class="btn back" onclick="backTopics()">← Topics</button>
+<div id="note" class="note"></div>
 </section>
-
 
 <footer>
-
-    <p>
-        © 2026 Mawa Academy
-    </p>
-
-    <p>
-        Free educational resources for learners.
-    </p>
-
+<p>© 2026 Mawa Academy</p>
+<p>Free educational revision resources for learners.</p>
 </footer>
 
-
 <script>
-
-/* =========================================================
-   SUBJECT DATABASE
-   ========================================================= */
-
 const subjects = {
-
-    ICT: {
-        icon: "💻",
-        description: "Information and Communication Technology",
-        topics: {
-
-            "Computer Fundamentals": {
-                notes:
-                "A computer is an electronic device that accepts data, processes it and produces information.",
-                summary:
-                "Computers receive input, process data, store information and produce output."
-            },
-
-            "Computer Hardware": {
-                notes:
-                "Hardware refers to the physical parts of a computer. Examples include the keyboard, mouse, monitor, motherboard, processor and storage devices.",
-                summary:
-                "Hardware is the physical equipment that makes up a computer system."
-            },
-
-            "Computer Software": {
-                notes:
-                "Software consists of programs and instructions that tell computer hardware what to do. System software manages the computer while application software helps users perform specific tasks.",
-                summary:
-                "Software provides instructions that allow computer hardware to perform useful tasks."
-            },
-
-            "Operating Systems": {
-                notes:
-                "An operating system manages computer hardware and provides an environment in which applications can run.",
-                summary:
-                "The operating system acts as an interface between the user, applications and computer hardware."
-            },
-
-            "Computer Networks": {
-                notes:
-                "A computer network connects devices so that they can communicate and share resources.",
-                summary:
-                "Networks allow computers and other devices to communicate and share resources."
-            },
-
-            "Internet": {
-                notes:
-                "The internet is a global network of interconnected computer networks. It supports services such as websites, email and online communication.",
-                summary:
-                "The internet connects computers and networks around the world."
-            },
-
-            "Cybersecurity": {
-                notes:
-                "Cybersecurity involves protecting computers, networks and information from unauthorized access, damage and attacks.",
-                summary:
-                "Strong passwords, software updates and careful handling of links help protect digital information."
-            },
-
-            "Programming": {
-                notes:
-                "Programming is the process of creating instructions that computers can execute. Common programming languages include Python, JavaScript and Java.",
-                summary:
-                "Programming uses logical instructions to make computers perform tasks."
-            }
-
-        }
-    },
-
-
-    "Siswati": {
-        icon: "🗣️",
-        description: "SiSwati language and communication",
-        topics: {
-
-            "Grammar": {
-                notes:
-                "Grammar is the system of rules used to form correct sentences. It includes word classes, sentence structure and agreement.",
-                summary:
-                "Grammar helps speakers and writers communicate clearly and correctly."
-            },
-
-            "Nouns": {
-                notes:
-                "A noun is a word used to name a person, place, animal, object or idea. SiSwati nouns belong to different noun classes.",
-                summary:
-                "Nouns name people, places, things and ideas."
-            },
-
-            "Verbs": {
-                notes:
-                "Verbs express actions, states or events. They are important parts of sentences because they tell us what happens.",
-                summary:
-                "Verbs describe actions or states."
-            },
-
-            "Sentence Construction": {
-                notes:
-                "A sentence normally communicates a complete idea. Good sentence construction requires appropriate word order and grammatical agreement.",
-                summary:
-                "Correct sentence structure makes communication clear."
-            },
-
-            "Comprehension": {
-                notes:
-                "Comprehension involves reading a passage carefully and identifying its main ideas, supporting details and meanings.",
-                summary:
-                "Good comprehension requires understanding both the information and meaning of a passage."
-            },
-
-            "Oral Communication": {
-                notes:
-                "Oral communication involves communicating ideas through speech. Effective communication requires clear pronunciation, appropriate language and listening.",
-                summary:
-                "Effective speaking combines clear language with good listening."
-            }
-
-        }
-    },
-
-
-    "English": {
-        icon: "📖",
-        description: "English language and literature",
-        topics: {
-
-            "Parts of Speech": {
-                notes:
-                "The main parts of speech include nouns, pronouns, verbs, adjectives, adverbs, prepositions, conjunctions and interjections.",
-                summary:
-                "Parts of speech describe the roles words play in sentences."
-            },
-
-            "Tenses": {
-                notes:
-                "Tenses show the time of an action. Common forms include present, past and future.",
-                summary:
-                "Tense tells the reader or listener when an action happens."
-            },
-
-            "Comprehension": {
-                notes:
-                "Comprehension requires identifying the main idea, supporting details, meanings and conclusions in a passage.",
-                summary:
-                "Read carefully, identify important information and answer using evidence from the passage."
-            },
-
-            "Essay Writing": {
-                notes:
-                "A good essay normally has an introduction, developed body paragraphs and a conclusion. Ideas should be logically organized.",
-                summary:
-                "Plan your argument, organize paragraphs and proofread your work."
-            },
-
-            "Figures of Speech": {
-                notes:
-                "Figures of speech use language creatively. Examples include simile, metaphor, personification, hyperbole and irony.",
-                summary:
-                "Figures of speech create emphasis, imagery and deeper meaning."
-            },
-
-            "Literature": {
-                notes:
-                "Literature can be studied through characters, setting, plot, themes, conflict, language and the writer's techniques.",
-                summary:
-                "Literary analysis explains how writers use characters, events and language to communicate ideas."
-            }
-
-        }
-    },
-
-
-    "Mathematics": {
-        icon: "📐",
-        description: "Mathematics and problem solving",
-        topics: {
-
-            "Number": {
-                notes:
-                "Number work includes integers, fractions, decimals, percentages, ratios and operations.",
-                summary:
-                "Number skills form the foundation for many areas of mathematics."
-            },
-
-            "Algebra": {
-                notes:
-                "Algebra uses letters and symbols to represent unknown values. Expressions can be simplified and equations solved using mathematical rules.",
-                summary:
-                "Algebra represents unknown quantities and relationships using symbols."
-            },
-
-            "Geometry": {
-                notes:
-                "Geometry studies shapes, sizes, angles, positions and properties of figures.",
-                summary:
-                "Geometry deals with the properties and relationships of shapes."
-            },
-
-            "Mensuration": {
-                notes:
-                "Mensuration involves calculating measurements such as perimeter, area, surface area and volume.",
-                summary:
-                "Use appropriate formulas to calculate measurements of geometric figures."
-            },
-
-            "Trigonometry": {
-                notes:
-                "Trigonometry studies relationships between angles and sides of triangles. In right-angled triangles, sine, cosine and tangent are commonly used.",
-                summary:
-                "SOH-CAH-TOA helps relate sides and angles in right-angled triangles."
-            },
-
-            "Statistics": {
-                notes:
-                "Statistics involves collecting, organizing, presenting and interpreting data. Measures include mean, median, mode and range.",
-                summary:
-                "Statistics helps us understand and interpret numerical data."
-            },
-
-            "Probability": {
-                notes:
-                "Probability measures how likely an event is to occur. It ranges from 0, meaning impossible, to 1, meaning certain.",
-                summary:
-                "Probability describes the likelihood of events."
-            }
-
-        }
-    },
-
-
-    "Religious Education": {
-        icon: "✝️",
-        description: "Religious Education",
-        topics: {
-
-            "Creation": {
-                notes:
-                "Creation accounts explore beliefs about the origin of the world, humanity and humanity's responsibilities toward creation.",
-                summary:
-                "Creation teachings often focus on God, humanity and responsibility for the world."
-            },
-
-            "The Life of Jesus": {
-                notes:
-                "The study of Jesus includes his teachings, relationships, miracles, death and resurrection as presented in the Christian scriptures.",
-                summary:
-                "Jesus' life and teachings form a central part of Christianity."
-            },
-
-            "The Early Church": {
-                notes:
-                "The early Christian church developed after Jesus' resurrection. The apostles played an important role in spreading Christianity.",
-                summary:
-                "The apostles helped establish and spread the early Christian movement."
-            },
-
-            "Christian Ethics": {
-                notes:
-                "Christian ethics considers how beliefs should influence choices, relationships and behaviour.",
-                summary:
-                "Christian ethics connects religious beliefs with everyday moral decisions."
-            },
-
-            "Religion and Society": {
-                notes:
-                "Religion can influence values, family life, community relationships and responses to social issues.",
-                summary:
-                "Religious beliefs can influence individual and community behaviour."
-            }
-
-        }
-    },
-
-
-    "Biology": {
-        icon: "🧬",
-        description: "Life sciences",
-        topics: {
-
-            "Cells": {
-                notes:
-                "The cell is the basic structural and functional unit of living organisms. Plant and animal cells contain structures with specialized functions.",
-                summary:
-                "Cells are the basic units from which living organisms are built."
-            },
-
-            "Nutrition": {
-                notes:
-                "Nutrition is the process by which organisms obtain and use nutrients. Humans require carbohydrates, proteins, fats, vitamins, minerals, water and fibre.",
-                summary:
-                "A balanced diet supplies the nutrients needed for health and growth."
-            },
-
-            "Respiration": {
-                notes:
-                "Respiration releases energy from food. Aerobic respiration uses oxygen while anaerobic respiration occurs without oxygen.",
-                summary:
-                "Respiration provides usable energy for life processes."
-            },
-
-            "Photosynthesis": {
-                notes:
-                "Photosynthesis is the process by which green plants use light energy to make glucose from carbon dioxide and water.",
-                summary:
-                "Plants use light energy to manufacture food during photosynthesis."
-            },
-
-            "Human Reproduction": {
-                notes:
-                "Human reproduction involves the male and female reproductive systems and the processes leading to fertilization and development.",
-                summary:
-                "Reproduction allows humans to produce offspring."
-            },
-
-            "Ecology": {
-                notes:
-                "Ecology studies relationships between organisms and their environment. Concepts include populations, communities, habitats and food chains.",
-                summary:
-                "Ecology explains how organisms interact with one another and their environment."
-            },
-
-            "Genetics": {
-                notes:
-                "Genetics is the study of heredity and variation. Genes carry information that influences characteristics.",
-                summary:
-                "Genetics explains how characteristics are inherited and why organisms vary."
-            }
-
-        }
-    },
-
-
-    "Agriculture": {
-        icon: "🌱",
-        description: "Crop and livestock production",
-        topics: {
-
-            "Soil Science": {
-                notes:
-                "Soil provides plants with support, water and mineral nutrients. Soil properties influence crop growth.",
-                summary:
-                "Healthy soil is important for successful crop production."
-            },
-
-            "Crop Production": {
-                notes:
-                "Crop production involves land preparation, planting, crop maintenance, harvesting and post-harvest handling.",
-                summary:
-                "Successful crop production requires appropriate management throughout the crop's life cycle."
-            },
-
-            "Plant Nutrition": {
-                notes:
-                "Plants require nutrients such as nitrogen, phosphorus and potassium. Organic and inorganic fertilizers can supply nutrients.",
-                summary:
-                "Plant nutrients support healthy growth and development."
-            },
-
-            "Livestock Production": {
-                notes:
-                "Livestock production involves keeping animals for products such as meat, milk, eggs, fibre and income.",
-                summary:
-                "Good livestock management includes feeding, housing, breeding and disease control."
-            },
-
-            "Pests and Diseases": {
-                notes:
-                "Agricultural pests and diseases can reduce crop yields. Management may involve cultural, biological, physical and chemical methods.",
-                summary:
-                "Pest and disease management protects crops and improves yields."
-            },
-
-            "Agricultural Economics": {
-                notes:
-                "Agricultural economics examines the production, distribution and marketing of agricultural goods.",
-                summary:
-                "Farmers make economic decisions about resources, costs, production and markets."
-            }
-
-        }
-    },
-
-
-    "Economics": {
-        icon: "💰",
-        description: "Economic principles and activities",
-        topics: {
-
-            "Basic Economic Concepts": {
-                notes:
-                "Economics studies how people and societies use limited resources to satisfy unlimited wants.",
-                summary:
-                "Scarcity means resources are limited while human wants are numerous."
-            },
-
-            "Demand": {
-                notes:
-                "Demand refers to the quantity of a good or service consumers are willing and able to buy at different prices.",
-                summary:
-                "Demand describes consumers' willingness and ability to purchase goods or services."
-            },
-
-            "Supply": {
-                notes:
-                "Supply refers to the quantity producers are willing and able to offer for sale at different prices.",
-                summary:
-                "Supply describes producers' willingness and ability to sell goods or services."
-            },
-
-            "Markets": {
-                notes:
-                "A market is a system in which buyers and sellers interact to exchange goods and services.",
-                summary:
-                "Markets connect buyers and sellers."
-            },
-
-            "Inflation": {
-                notes:
-                "Inflation is a sustained increase in the general price level of goods and services over time.",
-                summary:
-                "Inflation reduces the purchasing power of money when incomes do not rise at the same rate."
-            },
-
-            "Unemployment": {
-                notes:
-                "Unemployment occurs when people who are able and willing to work cannot find suitable employment.",
-                summary:
-                "Unemployment means available workers cannot find employment."
-            },
-
-            "Economic Growth": {
-                notes:
-                "Economic growth refers to an increase in the production of goods and services in an economy over time.",
-                summary:
-                "Economic growth represents an expansion in an economy's productive output."
-            }
-
-        }
-    },
-
-
-    "Geography": {
-        icon: "🌍",
-        description: "Physical and human geography",
-        topics: {
-
-            "Map Work": {
-                notes:
-                "Map work involves interpreting symbols, scales, directions, coordinates and physical features represented on maps.",
-                summary:
-                "Maps represent places and features using symbols and scale."
-            },
-
-            "Weather and Climate": {
-                notes:
-                "Weather describes atmospheric conditions at a particular time and place. Climate describes long-term patterns.",
-                summary:
-                "Weather is short-term atmospheric condition; climate is the long-term pattern."
-            },
-
-            "Rivers": {
-                notes:
-                "Rivers are flowing bodies of water. River processes include erosion, transportation and deposition.",
-                summary:
-                "Rivers shape landscapes through erosion, transportation and deposition."
-            },
-
-            "Population": {
-                notes:
-                "Population geography studies the distribution, density, growth and movement of people.",
-                summary:
-                "Population patterns are influenced by physical, economic and social factors."
-            },
-
-            "Settlement": {
-                notes:
-                "Settlements are places where people live. Factors influencing settlement include water supply, relief, transport and economic opportunities.",
-                summary:
-                "Physical and human factors influence where settlements develop."
-            },
-
-            "Agriculture": {
-                notes:
-                "Agricultural geography examines where farming occurs and the physical, economic and social factors affecting agriculture.",
-                summary:
-                "Agriculture is influenced by climate, soil, relief, markets, labour and technology."
-            },
-
-            "Environmental Management": {
-                notes:
-                "Environmental management involves using natural resources responsibly while reducing environmental damage.",
-                summary:
-                "Sustainable management aims to meet present needs while protecting resources for the future."
-            }
-
-        }
-    },
-
-
-    "History": {
-        icon: "🏛️",
-        description: "Past events, people and societies",
-        topics: {
-
-            "Historical Sources": {
-                notes:
-                "Historical sources provide evidence about the past. They can include written records, photographs, artefacts, oral accounts and buildings.",
-                summary:
-                "Historians use evidence from different sources to investigate the past."
-            },
-
-            "Pre-colonial Africa": {
-                notes:
-                "African societies developed diverse political, economic and social systems before European colonial rule.",
-                summary:
-                "Pre-colonial Africa contained many organized societies, kingdoms and communities."
-            },
-
-            "Colonialism": {
-                notes:
-                "Colonialism involved the control of territories and peoples by external powers. It affected political, economic and social systems.",
-                summary:
-                "Colonial rule changed many African political, economic and social structures."
-            },
-
-            "Industrial Revolution": {
-                notes:
-                "The Industrial Revolution involved major changes in production, technology and transportation, beginning in Britain and spreading elsewhere.",
-                summary:
-                "Industrialization transformed production, work, cities and transportation."
-            },
-
-            "World War I": {
-                notes:
-                "World War I was a major international conflict from 1914 to 1918 involving major alliances and many countries.",
-                summary:
-                "The war caused major political, economic and social changes."
-            },
-
-            "World War II": {
-                notes:
-                "World War II was a global conflict from 1939 to 1945. It involved many countries and resulted in major changes to international relations.",
-                summary:
-                "World War II reshaped international politics and contributed to the creation of new international institutions."
-            },
-
-            "African Independence": {
-                notes:
-                "African independence movements sought political self-government and an end to colonial rule.",
-                summary:
-                "Decolonization resulted in many African territories becoming independent states."
-            }
-
-        }
+  "Biology": {
+    "icon": "🧬",
+    "description": "EGCSE Biology — curriculum-based Form 5 revision.",
+    "topics": {
+      "Characteristics and classification of living organisms": {
+        "notes": "Covers characteristics of living organisms, classification, diversity and biological terminology. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Characteristics and classification of living organisms: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Characteristics and classification of living organisms.",
+          "Explain two important points you should know about Characteristics and classification of living organisms.",
+          "Apply your knowledge of Characteristics and classification of living organisms to a suitable example or examination-style situation."
+        ]
+      },
+      "Cell structure and organisation": {
+        "notes": "Study cell structures, their functions and how cells are organised in living organisms. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Cell structure and organisation: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Cell structure and organisation.",
+          "Explain two important points you should know about Cell structure and organisation.",
+          "Apply your knowledge of Cell structure and organisation to a suitable example or examination-style situation."
+        ]
+      },
+      "Nutrition and transport": {
+        "notes": "Review nutrition in plants and animals and the movement of substances needed for life. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Nutrition and transport: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Nutrition and transport.",
+          "Explain two important points you should know about Nutrition and transport.",
+          "Apply your knowledge of Nutrition and transport to a suitable example or examination-style situation."
+        ]
+      },
+      "Respiration and gas exchange": {
+        "notes": "Understand energy release in cells and the exchange of gases in organisms. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Respiration and gas exchange: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Respiration and gas exchange.",
+          "Explain two important points you should know about Respiration and gas exchange.",
+          "Apply your knowledge of Respiration and gas exchange to a suitable example or examination-style situation."
+        ]
+      },
+      "Coordination and response": {
+        "notes": "Study how organisms detect changes and coordinate appropriate responses. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Coordination and response: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Coordination and response.",
+          "Explain two important points you should know about Coordination and response.",
+          "Apply your knowledge of Coordination and response to a suitable example or examination-style situation."
+        ]
+      },
+      "Reproduction": {
+        "notes": "Review reproduction, pregnancy, birth control and sexually transmitted infections as specified by the syllabus. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Reproduction: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Reproduction.",
+          "Explain two important points you should know about Reproduction.",
+          "Apply your knowledge of Reproduction to a suitable example or examination-style situation."
+        ]
+      },
+      "Inheritance": {
+        "notes": "Study chromosomes, genes, alleles, DNA, mitosis, meiosis and inheritance. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Inheritance: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Inheritance.",
+          "Explain two important points you should know about Inheritance.",
+          "Apply your knowledge of Inheritance to a suitable example or examination-style situation."
+        ]
+      },
+      "Biotechnology and genetic engineering": {
+        "notes": "Study biotechnology, enzymes, fermentation, cloning and genetic engineering. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Biotechnology and genetic engineering: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Biotechnology and genetic engineering.",
+          "Explain two important points you should know about Biotechnology and genetic engineering.",
+          "Apply your knowledge of Biotechnology and genetic engineering to a suitable example or examination-style situation."
+        ]
+      },
+      "Biodiversity and ecosystems": {
+        "notes": "Study biodiversity, energy flow, food chains, food webs, pyramids and ecosystem relationships. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Biodiversity and ecosystems: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Biodiversity and ecosystems.",
+          "Explain two important points you should know about Biodiversity and ecosystems.",
+          "Apply your knowledge of Biodiversity and ecosystems to a suitable example or examination-style situation."
+        ]
+      },
+      "Practical skills and investigations": {
+        "notes": "Develop safe practical work, observation, measurement, data handling, planning and evaluation. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Practical skills and investigations: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Practical skills and investigations.",
+          "Explain two important points you should know about Practical skills and investigations.",
+          "Apply your knowledge of Practical skills and investigations to a suitable example or examination-style situation."
+        ]
+      }
     }
-
+  },
+  "Mathematics": {
+    "icon": "➗",
+    "description": "Cambridge IGCSE Mathematics 0580 — Form 5 revision.",
+    "topics": {
+      "Number": {
+        "notes": "Work with numbers, fractions, decimals, percentages, ratio, proportion, powers, roots, time, money and related calculations. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Number: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Number.",
+          "Explain two important points you should know about Number.",
+          "Apply your knowledge of Number to a suitable example or examination-style situation."
+        ]
+      },
+      "Algebra and graphs": {
+        "notes": "Study algebraic expressions, manipulation, equations, inequalities, sequences and graphs. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Algebra and graphs: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Algebra and graphs.",
+          "Explain two important points you should know about Algebra and graphs.",
+          "Apply your knowledge of Algebra and graphs to a suitable example or examination-style situation."
+        ]
+      },
+      "Coordinate geometry": {
+        "notes": "Use coordinates, gradients, straight-line equations and geometric relationships on coordinate grids. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Coordinate geometry: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Coordinate geometry.",
+          "Explain two important points you should know about Coordinate geometry.",
+          "Apply your knowledge of Coordinate geometry to a suitable example or examination-style situation."
+        ]
+      },
+      "Geometry": {
+        "notes": "Study angles, polygons, constructions, similarity, congruence and geometric reasoning. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Geometry: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Geometry.",
+          "Explain two important points you should know about Geometry.",
+          "Apply your knowledge of Geometry to a suitable example or examination-style situation."
+        ]
+      },
+      "Mensuration": {
+        "notes": "Calculate perimeter, area, surface area and volume of common two- and three-dimensional shapes. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Mensuration: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Mensuration.",
+          "Explain two important points you should know about Mensuration.",
+          "Apply your knowledge of Mensuration to a suitable example or examination-style situation."
+        ]
+      },
+      "Trigonometry": {
+        "notes": "Use trigonometric relationships and right-angled triangle methods to solve problems. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Trigonometry: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Trigonometry.",
+          "Explain two important points you should know about Trigonometry.",
+          "Apply your knowledge of Trigonometry to a suitable example or examination-style situation."
+        ]
+      },
+      "Transformations and vectors": {
+        "notes": "Study transformations and vector representation and use them to solve geometric problems. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Transformations and vectors: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Transformations and vectors.",
+          "Explain two important points you should know about Transformations and vectors.",
+          "Apply your knowledge of Transformations and vectors to a suitable example or examination-style situation."
+        ]
+      },
+      "Probability": {
+        "notes": "Calculate and interpret probabilities using appropriate methods and representations. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Probability: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Probability.",
+          "Explain two important points you should know about Probability.",
+          "Apply your knowledge of Probability to a suitable example or examination-style situation."
+        ]
+      },
+      "Statistics": {
+        "notes": "Organise and interpret data using tables, diagrams, averages, measures of spread and statistical reasoning. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Statistics: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Statistics.",
+          "Explain two important points you should know about Statistics.",
+          "Apply your knowledge of Statistics to a suitable example or examination-style situation."
+        ]
+      }
+    }
+  },
+  "ICT": {
+    "icon": "💻",
+    "description": "Cambridge IGCSE ICT 0417 — Form 5 theory and practical skills.",
+    "topics": {
+      "Types and components of computer systems": {
+        "notes": "Hardware, software and the main components of computer systems. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Types and components of computer systems: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Types and components of computer systems.",
+          "Explain two important points you should know about Types and components of computer systems.",
+          "Apply your knowledge of Types and components of computer systems to a suitable example or examination-style situation."
+        ]
+      },
+      "Input and output devices": {
+        "notes": "How different input and output devices work and where they are used. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Input and output devices: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Input and output devices.",
+          "Explain two important points you should know about Input and output devices.",
+          "Apply your knowledge of Input and output devices to a suitable example or examination-style situation."
+        ]
+      },
+      "Storage devices and media": {
+        "notes": "Storage technologies, media and their uses. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Storage devices and media: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Storage devices and media.",
+          "Explain two important points you should know about Storage devices and media.",
+          "Apply your knowledge of Storage devices and media to a suitable example or examination-style situation."
+        ]
+      },
+      "Networks and the effects of using them": {
+        "notes": "Computer networks, connectivity and their effects. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Networks and the effects of using them: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Networks and the effects of using them.",
+          "Explain two important points you should know about Networks and the effects of using them.",
+          "Apply your knowledge of Networks and the effects of using them to a suitable example or examination-style situation."
+        ]
+      },
+      "The effects of using IT": {
+        "notes": "Social, economic, environmental and workplace effects of information technology. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "The effects of using IT: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in The effects of using IT.",
+          "Explain two important points you should know about The effects of using IT.",
+          "Apply your knowledge of The effects of using IT to a suitable example or examination-style situation."
+        ]
+      },
+      "ICT applications": {
+        "notes": "Uses of ICT systems in different real-world situations. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "ICT applications: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in ICT applications.",
+          "Explain two important points you should know about ICT applications.",
+          "Apply your knowledge of ICT applications to a suitable example or examination-style situation."
+        ]
+      },
+      "The systems life cycle": {
+        "notes": "Analysis, design, development, testing, implementation, documentation and evaluation. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "The systems life cycle: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in The systems life cycle.",
+          "Explain two important points you should know about The systems life cycle.",
+          "Apply your knowledge of The systems life cycle to a suitable example or examination-style situation."
+        ]
+      },
+      "Safety and security": {
+        "notes": "Health and safety, data security, threats and protection methods. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Safety and security: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Safety and security.",
+          "Explain two important points you should know about Safety and security.",
+          "Apply your knowledge of Safety and security to a suitable example or examination-style situation."
+        ]
+      },
+      "Audience": {
+        "notes": "Audience needs, purpose, accessibility and appropriate ICT solutions. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Audience: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Audience.",
+          "Explain two important points you should know about Audience.",
+          "Apply your knowledge of Audience to a suitable example or examination-style situation."
+        ]
+      },
+      "Communication": {
+        "notes": "Email, internet communication, netiquette and effective online communication. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Communication: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Communication.",
+          "Explain two important points you should know about Communication.",
+          "Apply your knowledge of Communication to a suitable example or examination-style situation."
+        ]
+      },
+      "File management": {
+        "notes": "Files, folders, naming, organisation and efficient file handling. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "File management: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in File management.",
+          "Explain two important points you should know about File management.",
+          "Apply your knowledge of File management to a suitable example or examination-style situation."
+        ]
+      },
+      "Images": {
+        "notes": "Creating, editing and using digital images appropriately. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Images: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Images.",
+          "Explain two important points you should know about Images.",
+          "Apply your knowledge of Images to a suitable example or examination-style situation."
+        ]
+      },
+      "Layout": {
+        "notes": "Page layout, alignment, spacing and presentation of information. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Layout: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Layout.",
+          "Explain two important points you should know about Layout.",
+          "Apply your knowledge of Layout to a suitable example or examination-style situation."
+        ]
+      },
+      "Styles": {
+        "notes": "Using consistent styles and formatting in documents. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Styles: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Styles.",
+          "Explain two important points you should know about Styles.",
+          "Apply your knowledge of Styles to a suitable example or examination-style situation."
+        ]
+      },
+      "Proofing": {
+        "notes": "Spell checking, grammar, proofreading and document accuracy. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Proofing: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Proofing.",
+          "Explain two important points you should know about Proofing.",
+          "Apply your knowledge of Proofing to a suitable example or examination-style situation."
+        ]
+      },
+      "Graphs and charts": {
+        "notes": "Presenting data visually and choosing suitable charts. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Graphs and charts: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Graphs and charts.",
+          "Explain two important points you should know about Graphs and charts.",
+          "Apply your knowledge of Graphs and charts to a suitable example or examination-style situation."
+        ]
+      },
+      "Document production": {
+        "notes": "Creating professional documents using appropriate formatting and layout. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Document production: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Document production.",
+          "Explain two important points you should know about Document production.",
+          "Apply your knowledge of Document production to a suitable example or examination-style situation."
+        ]
+      },
+      "Databases": {
+        "notes": "Database structures, fields, records, queries, reports and data validation. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Databases: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Databases.",
+          "Explain two important points you should know about Databases.",
+          "Apply your knowledge of Databases to a suitable example or examination-style situation."
+        ]
+      },
+      "Presentations": {
+        "notes": "Planning and creating clear multimedia presentations. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Presentations: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Presentations.",
+          "Explain two important points you should know about Presentations.",
+          "Apply your knowledge of Presentations to a suitable example or examination-style situation."
+        ]
+      },
+      "Spreadsheets": {
+        "notes": "Formulas, functions, data handling, charts and spreadsheet modelling. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Spreadsheets: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Spreadsheets.",
+          "Explain two important points you should know about Spreadsheets.",
+          "Apply your knowledge of Spreadsheets to a suitable example or examination-style situation."
+        ]
+      },
+      "Website authoring": {
+        "notes": "HTML/CSS concepts, page structure, hyperlinks, layout and website design. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Website authoring: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Website authoring.",
+          "Explain two important points you should know about Website authoring.",
+          "Apply your knowledge of Website authoring to a suitable example or examination-style situation."
+        ]
+      }
+    }
+  },
+  "English": {
+    "icon": "📖",
+    "description": "Cambridge IGCSE First Language English 0990 — reading, writing, speaking and listening.",
+    "topics": {
+      "Reading comprehension": {
+        "notes": "Understand explicit and implicit meanings, attitudes, ideas and information in texts. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Reading comprehension: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Reading comprehension.",
+          "Explain two important points you should know about Reading comprehension.",
+          "Apply your knowledge of Reading comprehension to a suitable example or examination-style situation."
+        ]
+      },
+      "Summary writing": {
+        "notes": "Select relevant information and express it concisely in your own words. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Summary writing: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Summary writing.",
+          "Explain two important points you should know about Summary writing.",
+          "Apply your knowledge of Summary writing to a suitable example or examination-style situation."
+        ]
+      },
+      "Language analysis": {
+        "notes": "Analyse how writers use vocabulary, sentence structures, imagery and other linguistic devices. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Language analysis: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Language analysis.",
+          "Explain two important points you should know about Language analysis.",
+          "Apply your knowledge of Language analysis to a suitable example or examination-style situation."
+        ]
+      },
+      "Writer's effects": {
+        "notes": "Explain how writers create effects and influence readers. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Writer's effects: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Writer's effects.",
+          "Explain two important points you should know about Writer's effects.",
+          "Apply your knowledge of Writer's effects to a suitable example or examination-style situation."
+        ]
+      },
+      "Directed writing": {
+        "notes": "Use source material to create appropriate discursive, argumentative or persuasive writing. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Directed writing: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Directed writing.",
+          "Explain two important points you should know about Directed writing.",
+          "Apply your knowledge of Directed writing to a suitable example or examination-style situation."
+        ]
+      },
+      "Descriptive writing": {
+        "notes": "Create convincing descriptions using well-selected details, imagery and varied language. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Descriptive writing: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Descriptive writing.",
+          "Explain two important points you should know about Descriptive writing.",
+          "Apply your knowledge of Descriptive writing to a suitable example or examination-style situation."
+        ]
+      },
+      "Narrative writing": {
+        "notes": "Develop a clear plot using description, characterisation, setting and effective detail. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Narrative writing: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Narrative writing.",
+          "Explain two important points you should know about Narrative writing.",
+          "Apply your knowledge of Narrative writing to a suitable example or examination-style situation."
+        ]
+      },
+      "Discursive and argumentative writing": {
+        "notes": "Organise ideas logically, consider viewpoints and support arguments appropriately. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Discursive and argumentative writing: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Discursive and argumentative writing.",
+          "Explain two important points you should know about Discursive and argumentative writing.",
+          "Apply your knowledge of Discursive and argumentative writing to a suitable example or examination-style situation."
+        ]
+      },
+      "Persuasive writing": {
+        "notes": "Adapt language, register and structure to persuade a particular audience. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Persuasive writing: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Persuasive writing.",
+          "Explain two important points you should know about Persuasive writing.",
+          "Apply your knowledge of Persuasive writing to a suitable example or examination-style situation."
+        ]
+      },
+      "Letters, reports, articles, journals and speeches": {
+        "notes": "Understand the conventions and audience requirements of major text types in the syllabus. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Letters, reports, articles, journals and speeches: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Letters, reports, articles, journals and speeches.",
+          "Explain two important points you should know about Letters, reports, articles, journals and speeches.",
+          "Apply your knowledge of Letters, reports, articles, journals and speeches to a suitable example or examination-style situation."
+        ]
+      },
+      "Speaking and listening": {
+        "notes": "Plan and deliver an individual talk and participate effectively in conversation. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Speaking and listening: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Speaking and listening.",
+          "Explain two important points you should know about Speaking and listening.",
+          "Apply your knowledge of Speaking and listening to a suitable example or examination-style situation."
+        ]
+      }
+    }
+  },
+  "Religious Education": {
+    "icon": "✝️",
+    "description": "EGCSE Religious Education 6893 — Luke and Acts.",
+    "topics": {
+      "Background of the Gospel of Luke": {
+        "notes": "Study Roman rule in Palestine, Jewish religious groups, the Messiah concept and the historical setting. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Background of the Gospel of Luke: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Background of the Gospel of Luke.",
+          "Explain two important points you should know about Background of the Gospel of Luke.",
+          "Apply your knowledge of Background of the Gospel of Luke to a suitable example or examination-style situation."
+        ]
+      },
+      "Authorship and purpose of Luke": {
+        "notes": "Study authorship, date, Theophilus, purpose and characteristics of Luke's Gospel. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Authorship and purpose of Luke: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Authorship and purpose of Luke.",
+          "Explain two important points you should know about Authorship and purpose of Luke.",
+          "Apply your knowledge of Authorship and purpose of Luke to a suitable example or examination-style situation."
+        ]
+      },
+      "Birth and childhood of Jesus": {
+        "notes": "Study the annunciations, Mary and Elizabeth, the births of John and Jesus and the childhood narratives. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Birth and childhood of Jesus: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Birth and childhood of Jesus.",
+          "Explain two important points you should know about Birth and childhood of Jesus.",
+          "Apply your knowledge of Birth and childhood of Jesus to a suitable example or examination-style situation."
+        ]
+      },
+      "Themes in the life and ministry of Jesus": {
+        "notes": "Explore major themes and teachings in Luke's presentation of Jesus. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Themes in the life and ministry of Jesus: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Themes in the life and ministry of Jesus.",
+          "Explain two important points you should know about Themes in the life and ministry of Jesus.",
+          "Apply your knowledge of Themes in the life and ministry of Jesus to a suitable example or examination-style situation."
+        ]
+      },
+      "Conflict and opposition to Jesus": {
+        "notes": "Study opposition, disagreements and conflicts surrounding Jesus' ministry. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Conflict and opposition to Jesus: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Conflict and opposition to Jesus.",
+          "Explain two important points you should know about Conflict and opposition to Jesus.",
+          "Apply your knowledge of Conflict and opposition to Jesus to a suitable example or examination-style situation."
+        ]
+      },
+      "Passion narratives": {
+        "notes": "Study the events surrounding Jesus' suffering, death and the meaning presented in Luke. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Passion narratives: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Passion narratives.",
+          "Explain two important points you should know about Passion narratives.",
+          "Apply your knowledge of Passion narratives to a suitable example or examination-style situation."
+        ]
+      },
+      "Introduction to Acts": {
+        "notes": "Study the background to Acts and the birth of the early Church. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Introduction to Acts: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Introduction to Acts.",
+          "Explain two important points you should know about Introduction to Acts.",
+          "Apply your knowledge of Introduction to Acts to a suitable example or examination-style situation."
+        ]
+      },
+      "The Church in Jerusalem": {
+        "notes": "Study the early Christian community and the spread of the Church in Jerusalem. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "The Church in Jerusalem: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in The Church in Jerusalem.",
+          "Explain two important points you should know about The Church in Jerusalem.",
+          "Apply your knowledge of The Church in Jerusalem to a suitable example or examination-style situation."
+        ]
+      },
+      "Movement into Judaea and Samaria": {
+        "notes": "Study the expansion of the Christian movement beyond Jerusalem. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Movement into Judaea and Samaria: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Movement into Judaea and Samaria.",
+          "Explain two important points you should know about Movement into Judaea and Samaria.",
+          "Apply your knowledge of Movement into Judaea and Samaria to a suitable example or examination-style situation."
+        ]
+      },
+      "The Damascus experience": {
+        "notes": "Study Paul's conversion experience and its significance. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "The Damascus experience: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in The Damascus experience.",
+          "Explain two important points you should know about The Damascus experience.",
+          "Apply your knowledge of The Damascus experience to a suitable example or examination-style situation."
+        ]
+      },
+      "Life of the Early Church": {
+        "notes": "Study beliefs, practices, community life and challenges of early Christians. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Life of the Early Church: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Life of the Early Church.",
+          "Explain two important points you should know about Life of the Early Church.",
+          "Apply your knowledge of Life of the Early Church to a suitable example or examination-style situation."
+        ]
+      },
+      "Spread of the Church to other parts of the world": {
+        "notes": "Study missionary expansion and the spread of Christianity as covered in Acts. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Spread of the Church to other parts of the world: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Spread of the Church to other parts of the world.",
+          "Explain two important points you should know about Spread of the Church to other parts of the world.",
+          "Apply your knowledge of Spread of the Church to other parts of the world to a suitable example or examination-style situation."
+        ]
+      }
+    }
+  },
+  "Agriculture": {
+    "icon": "🌱",
+    "description": "Cambridge IGCSE Agriculture 0600 — practical and applied agriculture.",
+    "topics": {
+      "General agriculture": {
+        "notes": "Agriculture as an applied science, farming systems, resources and farm management. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "General agriculture: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in General agriculture.",
+          "Explain two important points you should know about General agriculture.",
+          "Apply your knowledge of General agriculture to a suitable example or examination-style situation."
+        ]
+      },
+      "Soil": {
+        "notes": "Soil properties, soil fertility, soil management and conservation. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Soil: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Soil.",
+          "Explain two important points you should know about Soil.",
+          "Apply your knowledge of Soil to a suitable example or examination-style situation."
+        ]
+      },
+      "Principles of plant growth": {
+        "notes": "Factors affecting plant growth and the principles behind healthy crop development. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Principles of plant growth: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Principles of plant growth.",
+          "Explain two important points you should know about Principles of plant growth.",
+          "Apply your knowledge of Principles of plant growth to a suitable example or examination-style situation."
+        ]
+      },
+      "Crop production": {
+        "notes": "Land preparation, planting, crop husbandry, harvesting and post-harvest practices. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Crop production: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Crop production.",
+          "Explain two important points you should know about Crop production.",
+          "Apply your knowledge of Crop production to a suitable example or examination-style situation."
+        ]
+      },
+      "Crop protection": {
+        "notes": "Pests, diseases, weeds and methods used to protect crops. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Crop protection: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Crop protection.",
+          "Explain two important points you should know about Crop protection.",
+          "Apply your knowledge of Crop protection to a suitable example or examination-style situation."
+        ]
+      },
+      "Livestock anatomy and physiology": {
+        "notes": "Structure and functions of livestock body systems. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Livestock anatomy and physiology: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Livestock anatomy and physiology.",
+          "Explain two important points you should know about Livestock anatomy and physiology.",
+          "Apply your knowledge of Livestock anatomy and physiology to a suitable example or examination-style situation."
+        ]
+      },
+      "Livestock production and health": {
+        "notes": "Animal husbandry, feeding, reproduction, health, hygiene and disease management. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Livestock production and health: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Livestock production and health.",
+          "Explain two important points you should know about Livestock production and health.",
+          "Apply your knowledge of Livestock production and health to a suitable example or examination-style situation."
+        ]
+      },
+      "Pasture management": {
+        "notes": "Grazing systems, stocking rates, carrying capacity, overstocking and pasture improvement. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Pasture management: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Pasture management.",
+          "Explain two important points you should know about Pasture management.",
+          "Apply your knowledge of Pasture management to a suitable example or examination-style situation."
+        ]
+      },
+      "Livestock and crop breeding": {
+        "notes": "Inheritance, selective breeding, artificial insemination and crop improvement. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Livestock and crop breeding: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Livestock and crop breeding.",
+          "Explain two important points you should know about Livestock and crop breeding.",
+          "Apply your knowledge of Livestock and crop breeding to a suitable example or examination-style situation."
+        ]
+      },
+      "Farm structure and tools": {
+        "notes": "Fencing, farm buildings, water supplies, tools and farm machinery. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Farm structure and tools: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Farm structure and tools.",
+          "Explain two important points you should know about Farm structure and tools.",
+          "Apply your knowledge of Farm structure and tools to a suitable example or examination-style situation."
+        ]
+      }
+    }
+  },
+  "Economics": {
+    "icon": "💰",
+    "description": "Cambridge IGCSE Economics 0455 — economic theory and application.",
+    "topics": {
+      "The basic economic problem": {
+        "notes": "Scarcity, choice, opportunity cost, factors of production and production possibility curves. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "The basic economic problem: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in The basic economic problem.",
+          "Explain two important points you should know about The basic economic problem.",
+          "Apply your knowledge of The basic economic problem to a suitable example or examination-style situation."
+        ]
+      },
+      "The allocation of resources": {
+        "notes": "Demand, supply, market equilibrium, disequilibrium and elasticity. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "The allocation of resources: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in The allocation of resources.",
+          "Explain two important points you should know about The allocation of resources.",
+          "Apply your knowledge of The allocation of resources to a suitable example or examination-style situation."
+        ]
+      },
+      "Money and banking": {
+        "notes": "Forms and functions of money and the roles of central and commercial banks. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Money and banking: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Money and banking.",
+          "Explain two important points you should know about Money and banking.",
+          "Apply your knowledge of Money and banking to a suitable example or examination-style situation."
+        ]
+      },
+      "Households": {
+        "notes": "Factors influencing household spending, saving and borrowing. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Households: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Households.",
+          "Explain two important points you should know about Households.",
+          "Apply your knowledge of Households to a suitable example or examination-style situation."
+        ]
+      },
+      "Workers": {
+        "notes": "Occupational choice, wage determination, earnings and division of labour/specialisation. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Workers: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Workers.",
+          "Explain two important points you should know about Workers.",
+          "Apply your knowledge of Workers to a suitable example or examination-style situation."
+        ]
+      },
+      "Trade unions": {
+        "notes": "Trade unions, collective bargaining and advantages and disadvantages of union activity. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Trade unions: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Trade unions.",
+          "Explain two important points you should know about Trade unions.",
+          "Apply your knowledge of Trade unions to a suitable example or examination-style situation."
+        ]
+      },
+      "Firms": {
+        "notes": "Business objectives, production, costs, revenue, economies of scale and market structures. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Firms: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Firms.",
+          "Explain two important points you should know about Firms.",
+          "Apply your knowledge of Firms to a suitable example or examination-style situation."
+        ]
+      },
+      "Government and the macroeconomy": {
+        "notes": "Macroeconomic aims, national economic performance and government policy. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Government and the macroeconomy: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Government and the macroeconomy.",
+          "Explain two important points you should know about Government and the macroeconomy.",
+          "Apply your knowledge of Government and the macroeconomy to a suitable example or examination-style situation."
+        ]
+      },
+      "Economic development": {
+        "notes": "Population, living standards, poverty, income distribution and development. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Economic development: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Economic development.",
+          "Explain two important points you should know about Economic development.",
+          "Apply your knowledge of Economic development to a suitable example or examination-style situation."
+        ]
+      },
+      "Globalisation and multinational companies": {
+        "notes": "Globalisation, MNCs, benefits and costs of international economic integration. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Globalisation and multinational companies: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Globalisation and multinational companies.",
+          "Explain two important points you should know about Globalisation and multinational companies.",
+          "Apply your knowledge of Globalisation and multinational companies to a suitable example or examination-style situation."
+        ]
+      },
+      "Free trade and protection": {
+        "notes": "Benefits of free trade, protection methods and reasons for protection. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Free trade and protection: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Free trade and protection.",
+          "Explain two important points you should know about Free trade and protection.",
+          "Apply your knowledge of Free trade and protection to a suitable example or examination-style situation."
+        ]
+      },
+      "Foreign exchange rates": {
+        "notes": "Exchange rates, their determination, causes of changes and effects. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Foreign exchange rates: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Foreign exchange rates.",
+          "Explain two important points you should know about Foreign exchange rates.",
+          "Apply your knowledge of Foreign exchange rates to a suitable example or examination-style situation."
+        ]
+      },
+      "Balance of payments": {
+        "notes": "Current account structure, deficits and surpluses and policies for stability. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Balance of payments: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Balance of payments.",
+          "Explain two important points you should know about Balance of payments.",
+          "Apply your knowledge of Balance of payments to a suitable example or examination-style situation."
+        ]
+      }
+    }
+  },
+  "History": {
+    "icon": "🏛️",
+    "description": "Cambridge IGCSE History 0470 — core content and depth studies.",
+    "topics": {
+      "Option A: Revolutions of 1848": {
+        "notes": "Liberalism, nationalism, causes, events, results and reasons for failure of the 1848 revolutions. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Option A: Revolutions of 1848: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Option A: Revolutions of 1848.",
+          "Explain two important points you should know about Option A: Revolutions of 1848.",
+          "Apply your knowledge of Option A: Revolutions of 1848 to a suitable example or examination-style situation."
+        ]
+      },
+      "Option A: Unification of Italy": {
+        "notes": "Austrian influence, nationalism, Mazzini, Cavour, Garibaldi and completion of unification. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Option A: Unification of Italy: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Option A: Unification of Italy.",
+          "Explain two important points you should know about Option A: Unification of Italy.",
+          "Apply your knowledge of Option A: Unification of Italy to a suitable example or examination-style situation."
+        ]
+      },
+      "Option A: Unification of Germany": {
+        "notes": "German nationalism, Zollverein, Bismarck, wars and creation of the German Empire. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Option A: Unification of Germany: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Option A: Unification of Germany.",
+          "Explain two important points you should know about Option A: Unification of Germany.",
+          "Apply your knowledge of Option A: Unification of Germany to a suitable example or examination-style situation."
+        ]
+      },
+      "Option A: American Civil War": {
+        "notes": "North and South, slavery, abolitionism, secession, Lincoln, victory and Reconstruction. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Option A: American Civil War: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Option A: American Civil War.",
+          "Explain two important points you should know about Option A: American Civil War.",
+          "Apply your knowledge of Option A: American Civil War to a suitable example or examination-style situation."
+        ]
+      },
+      "Option A: Nineteenth-century imperialism": {
+        "notes": "Motives for imperialism and impacts of European and US imperial expansion. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Option A: Nineteenth-century imperialism: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Option A: Nineteenth-century imperialism.",
+          "Explain two important points you should know about Option A: Nineteenth-century imperialism.",
+          "Apply your knowledge of Option A: Nineteenth-century imperialism to a suitable example or examination-style situation."
+        ]
+      },
+      "Option A: Causes of the First World War": {
+        "notes": "Alliance systems, arms race, colonial rivalries, Balkan developments and the July 1914 crisis. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Option A: Causes of the First World War: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Option A: Causes of the First World War.",
+          "Explain two important points you should know about Option A: Causes of the First World War.",
+          "Apply your knowledge of Option A: Causes of the First World War to a suitable example or examination-style situation."
+        ]
+      },
+      "Option B: Treaty of Versailles": {
+        "notes": "Aims of the peacemakers, terms, impact on Germany and contemporary opinions. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Option B: Treaty of Versailles: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Option B: Treaty of Versailles.",
+          "Explain two important points you should know about Option B: Treaty of Versailles.",
+          "Apply your knowledge of Option B: Treaty of Versailles to a suitable example or examination-style situation."
+        ]
+      },
+      "Option B: League of Nations": {
+        "notes": "Structure, aims, membership, successes, failures and humanitarian work. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Option B: League of Nations: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Option B: League of Nations.",
+          "Explain two important points you should know about Option B: League of Nations.",
+          "Apply your knowledge of Option B: League of Nations to a suitable example or examination-style situation."
+        ]
+      },
+      "Option B: Hitler's foreign policy and war in 1939": {
+        "notes": "Rearmament, Rhineland, Anschluss, Czechoslovakia, appeasement, Nazi-Soviet Pact and Poland. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Option B: Hitler's foreign policy and war in 1939: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Option B: Hitler's foreign policy and war in 1939.",
+          "Explain two important points you should know about Option B: Hitler's foreign policy and war in 1939.",
+          "Apply your knowledge of Option B: Hitler's foreign policy and war in 1939 to a suitable example or examination-style situation."
+        ]
+      },
+      "Option B: Origins of the Cold War": {
+        "notes": "Breakdown of the wartime alliance, Soviet expansion, US reactions, Germany and Berlin. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Option B: Origins of the Cold War: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Option B: Origins of the Cold War.",
+          "Explain two important points you should know about Option B: Origins of the Cold War.",
+          "Apply your knowledge of Option B: Origins of the Cold War to a suitable example or examination-style situation."
+        ]
+      },
+      "Option B: Containment of communism": {
+        "notes": "US involvement in Korea, Cuba and Vietnam. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Option B: Containment of communism: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Option B: Containment of communism.",
+          "Explain two important points you should know about Option B: Containment of communism.",
+          "Apply your knowledge of Option B: Containment of communism to a suitable example or examination-style situation."
+        ]
+      },
+      "Option B: Soviet control of Eastern Europe": {
+        "notes": "Hungary, Czechoslovakia, Berlin Wall, Solidarity and Gorbachev. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Option B: Soviet control of Eastern Europe: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Option B: Soviet control of Eastern Europe.",
+          "Explain two important points you should know about Option B: Soviet control of Eastern Europe.",
+          "Apply your knowledge of Option B: Soviet control of Eastern Europe to a suitable example or examination-style situation."
+        ]
+      },
+      "Depth study: First World War": {
+        "notes": "Western Front, other fronts, world involvement and the armistice. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Depth study: First World War: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Depth study: First World War.",
+          "Explain two important points you should know about Depth study: First World War.",
+          "Apply your knowledge of Depth study: First World War to a suitable example or examination-style situation."
+        ]
+      },
+      "Depth study: Germany 1918–45": {
+        "notes": "The Weimar Republic, Hitler, Nazi rule and Germany during the Second World War. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Depth study: Germany 1918–45: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Depth study: Germany 1918–45.",
+          "Explain two important points you should know about Depth study: Germany 1918–45.",
+          "Apply your knowledge of Depth study: Germany 1918–45 to a suitable example or examination-style situation."
+        ]
+      },
+      "Depth study: Russia 1905–41": {
+        "notes": "Revolution, Bolshevik rule, Lenin, Stalin, dictatorship and economic policies. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Depth study: Russia 1905–41: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Depth study: Russia 1905–41.",
+          "Explain two important points you should know about Depth study: Russia 1905–41.",
+          "Apply your knowledge of Depth study: Russia 1905–41 to a suitable example or examination-style situation."
+        ]
+      },
+      "Depth study: United States 1919–41": {
+        "notes": "The 1920s, social change, Wall Street Crash and New Deal. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Depth study: United States 1919–41: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Depth study: United States 1919–41.",
+          "Explain two important points you should know about Depth study: United States 1919–41.",
+          "Apply your knowledge of Depth study: United States 1919–41 to a suitable example or examination-style situation."
+        ]
+      },
+      "Depth study: Second World War": {
+        "notes": "Major developments and consequences in Europe and the Asia-Pacific. Use the syllabus wording as a checklist: define important terms, explain processes or causes, give relevant examples, and practise applying the ideas to unfamiliar questions.",
+        "summary": "Depth study: Second World War: focus on the key concepts, terminology, relationships and examples required by the syllabus.",
+        "questions": [
+          "Define or describe the main ideas in Depth study: Second World War.",
+          "Explain two important points you should know about Depth study: Second World War.",
+          "Apply your knowledge of Depth study: Second World War to a suitable example or examination-style situation."
+        ]
+      }
+    }
+  }
 };
 
+let currentSubject = null;
 
-/* =========================================================
-   DISPLAY SUBJECTS
-   ========================================================= */
+const subjectGrid=document.getElementById("subjectGrid");
+const topicsSection=document.getElementById("topics");
+const notesSection=document.getElementById("notes");
 
-const subjectGrid =
-    document.getElementById("subjectGrid");
-
-function displaySubjects(filter = "") {
-
-    subjectGrid.innerHTML = "";
-
-    Object.entries(subjects).forEach(
-        ([name, subject]) => {
-
-            if (
-                filter &&
-                !name.toLowerCase().includes(
-                    filter.toLowerCase()
-                )
-            ) {
-                return;
-            }
-
-            const card =
-                document.createElement("div");
-
-            card.className = "subject";
-
-            card.innerHTML = `
-                <div class="subject-icon">
-                    ${subject.icon}
-                </div>
-
-                <h3>${name}</h3>
-
-                <p>${subject.description}</p>
-
-                <br>
-
-                <span>
-                    ${Object.keys(subject.topics).length}
-                    topics
-                </span>
-            `;
-
-            card.onclick = () =>
-                showTopics(name);
-
-            subjectGrid.appendChild(card);
-        }
-    );
-}
-
-displaySubjects();
-
-
-/* =========================================================
-   SHOW TOPICS
-   ========================================================= */
-
-function showTopics(subjectName) {
-
-    const subject =
-        subjects[subjectName];
-
-    document.getElementById(
-        "subjects"
-    ).style.display = "none";
-
-    document.getElementById(
-        "notesSection"
-    ).style.display = "none";
-
-    document.getElementById(
-        "topicSection"
-    ).style.display = "block";
-
-    document.getElementById(
-        "topicTitle"
-    ).textContent =
-        subject.icon + " " + subjectName;
-
-    document.getElementById(
-        "topicDescription"
-    ).textContent =
-        subject.description;
-
-    const grid =
-        document.getElementById("topicGrid");
-
-    grid.innerHTML = "";
-
-    Object.entries(subject.topics)
-        .forEach(([topic, data]) => {
-
-            const card =
-                document.createElement("div");
-
-            card.className = "topic";
-
-            card.innerHTML = `
-                <h3>${topic}</h3>
-
-                <p>
-                    ${data.summary}
-                </p>
-
-                <button class="btn">
-                    Read Notes
-                </button>
-            `;
-
-            card.querySelector("button")
-                .onclick = () =>
-                    showNote(
-                        subjectName,
-                        topic
-                    );
-
-            grid.appendChild(card);
-
-        });
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+function showSubjects(filter=""){
+    document.getElementById("subjects").classList.remove("hidden");
+    topicsSection.classList.add("hidden");
+    notesSection.classList.add("hidden");
+    subjectGrid.innerHTML="";
+    const f=filter.toLowerCase();
+    Object.entries(subjects).forEach(([name,s])=>{
+        const topicMatch=Object.keys(s.topics).some(t=>t.toLowerCase().includes(f));
+        if(f && !name.toLowerCase().includes(f) && !topicMatch) return;
+        const c=document.createElement("div");
+        c.className="card";
+        c.innerHTML=`<div class="icon">${s.icon}</div><h3>${name}</h3><p class="muted">${s.description}</p><p class="muted">${Object.keys(s.topics).length} syllabus topics</p><button class="btn">Open Subject</button>`;
+        c.querySelector("button").onclick=()=>showTopics(name);
+        subjectGrid.appendChild(c);
     });
 }
 
+function showTopics(name){
+    currentSubject=name;
+    const s=subjects[name];
+    document.getElementById("subjects").classList.add("hidden");
+    notesSection.classList.add("hidden");
+    topicsSection.classList.remove("hidden");
+    document.getElementById("topicTitle").textContent=s.icon+" "+name;
+    document.getElementById("topicDesc").textContent=s.description;
+    const grid=document.getElementById("topicGrid");
+    grid.innerHTML="";
+    Object.entries(s.topics).forEach(([topic,data])=>{
+        const c=document.createElement("div");
+        c.className="card";
+        c.innerHTML=`<h3>${topic}</h3><p class="muted">${data.summary}</p><button class="btn">Read Notes</button>`;
+        c.querySelector("button").onclick=()=>showNote(name,topic);
+        grid.appendChild(c);
+    });
+    window.scrollTo({top:0,behavior:"smooth"});
+}
 
-/* =========================================================
-   SHOW NOTE
-   ========================================================= */
-
-function showNote(subjectName, topic) {
-
-    const data =
-        subjects[subjectName]
-        .topics[topic];
-
-    document.getElementById(
-        "topicSection"
-    ).style.display = "none";
-
-    document.getElementById(
-        "notesSection"
-    ).style.display = "block";
-
-    document.getElementById(
-        "noteContainer"
-    ).innerHTML = `
-
-        <h2>${topic}</h2>
-
-        <p>
-            <strong>Subject:</strong>
-            ${subjectName}
-        </p>
-
-        <h3>📖 Notes</h3>
-
-        <p>
-            ${data.notes}
-        </p>
-
-        <div class="summary">
-
-            <h3>📝 Summary</h3>
-
-            <p>
-                ${data.summary}
-            </p>
-
-        </div>
-
+function showNote(subject,topic){
+    const data=subjects[subject].topics[topic];
+    topicsSection.classList.add("hidden");
+    notesSection.classList.remove("hidden");
+    document.getElementById("note").innerHTML=`
+      <h2>${topic}</h2>
+      <p class="muted"><strong>Subject:</strong> ${subject}</p>
+      <h3>📖 Notes</h3>
+      <p>${data.notes}</p>
+      <div class="summary"><h3>📝 Summary</h3><p>${data.summary}</p></div>
+      <h3>✏️ Revision Questions</h3>
+      ${data.questions.map((q,i)=>`<div class="q"><strong>${i+1}.</strong> ${q}</div>`).join("")}
     `;
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+    window.scrollTo({top:0,behavior:"smooth"});
 }
 
-
-/* =========================================================
-   BACK TO SUBJECTS
-   ========================================================= */
-
-function showSubjects() {
-
-    document.getElementById(
-        "topicSection"
-    ).style.display = "none";
-
-    document.getElementById(
-        "notesSection"
-    ).style.display = "none";
-
-    document.getElementById(
-        "subjects"
-    ).style.display = "block";
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+function backTopics(){
+    notesSection.classList.add("hidden");
+    topicsSection.classList.remove("hidden");
+    window.scrollTo({top:0,behavior:"smooth"});
 }
 
+document.getElementById("search").addEventListener("input",e=>showSubjects(e.target.value));
 
-/* =========================================================
-   BACK TO TOPICS
-   ========================================================= */
+document.getElementById("theme").onclick=function(){
+    document.body.classList.toggle("dark");
+    this.textContent=document.body.classList.contains("dark")?"☀️":"🌙";
+};
 
-function showTopicsFromCurrent() {
-
-    document.getElementById(
-        "notesSection"
-    ).style.display = "none";
-
-    document.getElementById(
-        "topicSection"
-    ).style.display = "block";
-}
-
-
-/* =========================================================
-   SEARCH
-   ========================================================= */
-
-document.getElementById(
-    "search"
-).addEventListener(
-    "input",
-    function () {
-
-        const value =
-            this.value.trim();
-
-        displaySubjects(value);
-
-        if (value) {
-
-            const topicResults = [];
-
-            Object.entries(subjects)
-                .forEach(
-                    ([subjectName, subject]) => {
-
-                        Object.entries(
-                            subject.topics
-                        ).forEach(
-                            ([topic, data]) => {
-
-                                if (
-                                    topic
-                                        .toLowerCase()
-                                        .includes(
-                                            value.toLowerCase()
-                                        )
-                                ) {
-
-                                    topicResults.push({
-                                        subjectName,
-                                        topic,
-                                        data
-                                    });
-
-                                }
-
-                            }
-                        );
-
-                    }
-                );
-
-            if (topicResults.length) {
-
-                subjectGrid.innerHTML +=
-                    `<h2 style="grid-column:1/-1;margin-top:30px">
-                        Topic results
-                    </h2>`;
-
-                topicResults.forEach(result => {
-
-                    const card =
-                        document.createElement("div");
-
-                    card.className = "topic";
-
-                    card.innerHTML = `
-                        <h3>
-                            ${result.topic}
-                        </h3>
-
-                        <p>
-                            ${result.subjectName}
-                        </p>
-
-                        <button class="btn">
-                            Read Notes
-                        </button>
-                    `;
-
-                    card.querySelector("button")
-                        .onclick = () =>
-                            showNote(
-                                result.subjectName,
-                                result.topic
-                            );
-
-                    subjectGrid.appendChild(card);
-
-                });
-
-            }
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   DARK MODE
-   ========================================================= */
-
-document.getElementById(
-    "theme"
-).addEventListener(
-    "click",
-    function () {
-
-        document.body.classList.toggle(
-            "dark"
-        );
-
-        this.textContent =
-            document.body.classList.contains("dark")
-            ? "☀️"
-            : "🌙";
-
-    }
-);
-
+showSubjects();
 </script>
-
 </body>
-    </html>
+</html>
