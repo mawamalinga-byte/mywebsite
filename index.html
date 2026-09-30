@@ -1,514 +1,1337 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Mawa.dev | Developer</title>
+<title>Mawa Academy | Free School Notes</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
 
-        :root {
-            --bg: #0f172a;
-            --card: #1e293b;
-            --text: #ffffff;
-            --muted: #cbd5e1;
-            --blue: #38bdf8;
-        }
+:root {
+    --bg: #f5f7fb;
+    --card: #ffffff;
+    --text: #172033;
+    --muted: #667085;
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --border: #e5e7eb;
+}
 
-        body.light {
-            --bg: #f1f5f9;
-            --card: #ffffff;
-            --text: #0f172a;
-            --muted: #475569;
-        }
+body.dark {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --text: #f8fafc;
+    --muted: #cbd5e1;
+    --border: #334155;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            transition: 0.3s;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: .3s;
+}
 
-        /* NAVIGATION */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 15px 7%;
-            background: rgba(2, 6, 23, 0.95);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-        }
+/* NAVIGATION */
 
-        nav h2 {
-            color: white;
-        }
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #0f172a;
+    color: white;
+    padding: 15px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        nav h2 span {
-            color: var(--blue);
-        }
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+}
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-        }
+.logo span {
+    color: #38bdf8;
+}
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
+.nav-buttons {
+    display: flex;
+    gap: 8px;
+}
 
-        nav a:hover {
-            color: var(--blue);
-        }
+.nav-buttons button {
+    border: 0;
+    background: transparent;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+}
 
-        #themeBtn,
-        #menuBtn {
-            border: none;
-            background: none;
-            color: white;
-            font-size: 22px;
-            cursor: pointer;
-        }
+#menu {
+    display: none;
+}
 
-        #menuBtn {
-            display: none;
-        }
+/* HERO */
 
-        /* HERO */
-        .hero {
-            min-height: 100vh;
-            padding: 120px 20px 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: linear-gradient(135deg, #0f172a, #1e3a8a);
-        }
+.hero {
+    background: linear-gradient(135deg, #172554, #2563eb);
+    color: white;
+    text-align: center;
+    padding: 90px 20px;
+}
 
-        .hero-content {
-            animation: fadeUp 1.2s ease;
-        }
+.hero h1 {
+    font-size: clamp(38px, 8vw, 70px);
+    margin-bottom: 15px;
+}
 
-        .hero h1 {
-            font-size: clamp(40px, 8vw, 70px);
-            margin-bottom: 15px;
-        }
+.hero h1 span {
+    color: #7dd3fc;
+}
 
-        .hero h1 span {
-            color: var(--blue);
-        }
+.hero p {
+    max-width: 700px;
+    margin: auto;
+    color: #dbeafe;
+    font-size: 19px;
+}
 
-        .hero p {
-            max-width: 650px;
-            margin: auto;
-            color: var(--muted);
-            font-size: 20px;
-        }
+.hero-buttons {
+    margin-top: 30px;
+}
 
-        .btn {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 14px 25px;
-            background: var(--blue);
-            color: #020617;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 8px;
+    background: #38bdf8;
+    color: #082f49;
+    text-decoration: none;
+    font-weight: bold;
+    border: 0;
+    cursor: pointer;
+}
 
-        .btn:hover {
-            transform: translateY(-4px);
-        }
+.btn:hover {
+    background: #7dd3fc;
+}
 
-        /* SECTIONS */
-        section {
-            padding: 90px 8%;
-        }
+/* SEARCH */
 
-        section h2 {
-            text-align: center;
-            font-size: 35px;
-            margin-bottom: 40px;
-        }
+.search-area {
+    max-width: 850px;
+    margin: -30px auto 50px;
+    padding: 0 20px;
+}
 
-        /* ABOUT */
-        .about {
-            max-width: 800px;
-            margin: auto;
-            text-align: center;
-            color: var(--muted);
-            font-size: 18px;
-        }
+.search-box {
+    width: 100%;
+    padding: 17px;
+    border-radius: 12px;
+    border: 2px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    font-size: 16px;
+    outline: none;
+}
 
-        /* SKILLS */
-        .skills {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
-        }
+/* SECTIONS */
 
-        .skill {
-            background: var(--card);
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            transition: 0.3s;
-        }
+section {
+    padding: 70px 6%;
+}
 
-        .skill:hover {
-            transform: translateY(-8px);
-        }
+.section-title {
+    text-align: center;
+    font-size: 34px;
+    margin-bottom: 15px;
+}
 
-        .skill h3 {
-            color: var(--blue);
-            margin-bottom: 10px;
-        }
+.section-description {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    color: var(--muted);
+}
 
-        .skill p {
-            color: var(--muted);
-        }
+/* SUBJECTS */
 
-        /* PROJECTS */
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 25px;
-        }
+.subject-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(230px, 1fr));
+    gap: 22px;
+}
 
-        .project {
-            background: var(--card);
-            padding: 25px;
-            border-radius: 15px;
-            transition: 0.3s;
-        }
+.subject {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 25px;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: .25s;
+}
 
-        .project:hover {
-            transform: translateY(-8px);
-        }
+.subject:hover {
+    transform: translateY(-6px);
+    border-color: var(--primary);
+}
 
-        .project h3 {
-            color: var(--blue);
-            margin-bottom: 10px;
-        }
+.subject-icon {
+    font-size: 38px;
+    margin-bottom: 12px;
+}
 
-        .project p {
-            color: var(--muted);
-            margin-bottom: 15px;
-        }
+.subject h3 {
+    margin-bottom: 8px;
+}
 
-        /* CONTACT */
-        .contact {
-            text-align: center;
-        }
+.subject p {
+    color: var(--muted);
+    font-size: 14px;
+}
 
-        .contact p {
-            color: var(--muted);
-            margin-bottom: 20px;
-        }
+/* TOPICS */
 
-        /* WHATSAPP */
-        .whatsapp {
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            background: #25d366;
-            color: white;
-            padding: 15px 20px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            z-index: 999;
-        }
+#topicSection {
+    display: none;
+}
 
-        /* FOOTER */
-        footer {
-            text-align: center;
-            padding: 25px;
-            background: #020617;
-            color: #94a3b8;
-        }
+.topic-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
 
-        /* ANIMATION */
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
+.topic {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 22px;
+    border-radius: 14px;
+}
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+.topic h3 {
+    margin-bottom: 10px;
+    color: var(--primary);
+}
 
-        /* MOBILE */
-        @media (max-width: 700px) {
+.topic p {
+    color: var(--muted);
+    margin-bottom: 15px;
+}
 
-            #menuBtn {
-                display: block;
-            }
+/* NOTES */
 
-            nav ul {
-                position: absolute;
-                top: 65px;
-                left: 0;
-                width: 100%;
-                background: #020617;
-                display: none;
-                flex-direction: column;
-                text-align: center;
-                padding: 20px;
-            }
+#notesSection {
+    display: none;
+}
 
-            nav ul.show {
-                display: flex;
-            }
+.note {
+    max-width: 900px;
+    margin: auto;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 30px;
+}
 
-            .hero p {
-                font-size: 17px;
-            }
-        }
-    </style>
+.note h2 {
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.note h3 {
+    margin: 25px 0 10px;
+}
+
+.note p {
+    color: var(--muted);
+    margin-bottom: 12px;
+    line-height: 1.7;
+}
+
+.note ul {
+    margin-left: 25px;
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+.summary {
+    margin-top: 25px;
+    padding: 20px;
+    background: rgba(37,99,235,.08);
+    border-left: 5px solid var(--primary);
+    border-radius: 8px;
+}
+
+.back {
+    margin-bottom: 25px;
+}
+
+/* FOOTER */
+
+footer {
+    background: #020617;
+    color: #94a3b8;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+/* MOBILE */
+
+@media(max-width:700px) {
+
+    #menu {
+        display: block;
+    }
+
+    nav {
+        padding: 15px 5%;
+    }
+
+    .hero {
+        padding: 70px 20px;
+    }
+
+    section {
+        padding: 55px 5%;
+    }
+
+    .section-title {
+        font-size: 29px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
-    <nav>
-        <h2>Mawa<span>.dev</span></h2>
+<!-- NAVIGATION -->
 
-        <div>
-            <button id="themeBtn">🌙</button>
-            <button id="menuBtn">☰</button>
-        </div>
+<nav>
 
-        <ul id="navLinks">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    <div class="logo">
+        Mawa<span>Academy</span>
+    </div>
 
+    <div class="nav-buttons">
+        <button id="theme">🌙</button>
+        <button id="menu">☰</button>
+    </div>
 
-    <!-- HOME -->
-    <section class="hero" id="home">
-        <div class="hero-content">
+</nav>
 
-            <h1>Hello, I'm <span>Mawa</span></h1>
 
-            <p>
-                A young developer from Eswatini building websites,
-                applications and learning new technologies.
-            </p>
+<!-- HERO -->
 
-            <a href="#projects" class="btn">
-                View My Projects
-            </a>
+<header class="hero">
 
-        </div>
-    </section>
+    <h1>Welcome to <span>Mawa Academy</span></h1>
 
+    <p>
+        Free school notes, summaries and revision material
+        designed to help learners understand their subjects.
+    </p>
 
-    <!-- ABOUT -->
-    <section id="about">
+    <div class="hero-buttons">
+        <a href="#subjects" class="btn">
+            Start Learning
+        </a>
+    </div>
 
-        <h2>About Me</h2>
+</header>
 
-        <div class="about">
-            <p>
-                I'm passionate about programming and technology.
-                I enjoy learning how software works and building
-                my own projects from scratch.
-            </p>
 
-            <br>
+<!-- SEARCH -->
 
-            <p>
-                My goal is to keep improving my programming skills
-                and build useful technology.
-            </p>
-        </div>
+<div class="search-area">
 
-    </section>
+    <input
+        id="search"
+        class="search-box"
+        type="search"
+        placeholder="Search subjects or topics..."
+    >
 
+</div>
 
-    <!-- SKILLS -->
-    <section id="skills">
 
-        <h2>My Skills</h2>
+<!-- SUBJECTS -->
 
-        <div class="skills">
+<section id="subjects">
 
-            <div class="skill">
-                <h3>HTML</h3>
-                <p>Website structure</p>
-            </div>
+    <h2 class="section-title">
+        📚 School Subjects
+    </h2>
 
-            <div class="skill">
-                <h3>CSS</h3>
-                <p>Website design</p>
-            </div>
+    <p class="section-description">
+        Choose a subject to explore its topics, notes and summaries.
+    </p>
 
-            <div class="skill">
-                <h3>JavaScript</h3>
-                <p>Website functionality</p>
-            </div>
+    <div id="subjectGrid" class="subject-grid"></div>
 
-            <div class="skill">
-                <h3>Python</h3>
-                <p>Programming & automation</p>
-            </div>
+</section>
 
-            <div class="skill">
-                <h3>Termux</h3>
-                <p>Linux tools on Android</p>
-            </div>
 
-            <div class="skill">
-                <h3>GitHub</h3>
-                <p>Code hosting</p>
-            </div>
+<!-- TOPICS -->
 
-        </div>
+<section id="topicSection">
 
-    </section>
+    <button class="btn back" onclick="showSubjects()">
+        ← Back to Subjects
+    </button>
 
+    <h2 id="topicTitle" class="section-title"></h2>
 
-    <!-- PROJECTS -->
-    <section id="projects">
+    <p id="topicDescription" class="section-description"></p>
 
-        <h2>My Projects</h2>
+    <div id="topicGrid" class="topic-grid"></div>
 
-        <div class="projects">
+</section>
 
-            <div class="project">
-                <h3>🌐 Mawa.dev</h3>
-                <p>
-                    My personal developer portfolio website.
-                </p>
-                <a href="#home" class="btn">Open</a>
-            </div>
 
-            <div class="project">
-                <h3>🤖 Python Projects</h3>
-                <p>
-                    Programming projects created while learning Python.
-                </p>
-            </div>
+<!-- NOTES -->
 
-            <div class="project">
-                <h3>📱 Android Projects</h3>
-                <p>
-                    Projects and experiments created using Android
-                    and Termux.
-                </p>
-            </div>
+<section id="notesSection">
 
-        </div>
+    <button class="btn back" onclick="showTopics()">
+        ← Back to Topics
+    </button>
 
-    </section>
+    <div id="noteContainer" class="note"></div>
 
+</section>
 
-    <!-- CONTACT -->
-    <section id="contact">
 
-        <h2>Contact Me</h2>
+<footer>
 
-        <div class="contact">
-
-            <p>
-                Want to contact me or talk about a project?
-            </p>
-
-            <!-- Replace the number with your WhatsApp number -->
-            <a
-                class="btn"
-                href="https://wa.me/268XXXXXXXX"
-                target="_blank">
-                Message Me on WhatsApp
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- WHATSAPP FLOATING BUTTON -->
-
-    <!-- Replace 268XXXXXXXX with your WhatsApp number -->
-    <a
-        class="whatsapp"
-        href="https://wa.me/268XXXXXXXX"
-        target="_blank">
-        WhatsApp
-    </a>
-
-
-    <!-- FOOTER -->
-    <footer>
-        <p>
-            © 2026 Mawa.dev | Built with HTML, CSS & JavaScript
-        </p>
-    </footer>
-
-
-    <!-- JAVASCRIPT -->
-    <script>
-
-        // MOBILE MENU
-
-        const menuBtn = document.getElementById("menuBtn");
-        const navLinks = document.getElementById("navLinks");
-
-        menuBtn.addEventListener("click", function () {
-            navLinks.classList.toggle("show");
-        });
-
-
-        // CLOSE MENU AFTER CLICKING A LINK
-
-        document.querySelectorAll("#navLinks a").forEach(function(link) {
-
-            link.addEventListener("click", function() {
-                navLinks.classList.remove("show");
-            });
-
-        });
-
-
-        // DARK / LIGHT MODE
-
-        const themeBtn = document.getElementById("themeBtn");
-
-        themeBtn.addEventListener("click", function() {
-
-            document.body.classList.toggle("light");
-
-            if (document.body.classList.contains("light")) {
-                themeBtn.textContent = "☀️";
-            } else {
-                themeBtn.textContent = "🌙";
+    <p>
+        © 2026 Mawa Academy
+    </p>
+
+    <p>
+        Free educational resources for learners.
+    </p>
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   SUBJECT DATABASE
+   ========================================================= */
+
+const subjects = {
+
+    ICT: {
+        icon: "💻",
+        description: "Information and Communication Technology",
+        topics: {
+
+            "Computer Fundamentals": {
+                notes:
+                "A computer is an electronic device that accepts data, processes it and produces information.",
+                summary:
+                "Computers receive input, process data, store information and produce output."
+            },
+
+            "Computer Hardware": {
+                notes:
+                "Hardware refers to the physical parts of a computer. Examples include the keyboard, mouse, monitor, motherboard, processor and storage devices.",
+                summary:
+                "Hardware is the physical equipment that makes up a computer system."
+            },
+
+            "Computer Software": {
+                notes:
+                "Software consists of programs and instructions that tell computer hardware what to do. System software manages the computer while application software helps users perform specific tasks.",
+                summary:
+                "Software provides instructions that allow computer hardware to perform useful tasks."
+            },
+
+            "Operating Systems": {
+                notes:
+                "An operating system manages computer hardware and provides an environment in which applications can run.",
+                summary:
+                "The operating system acts as an interface between the user, applications and computer hardware."
+            },
+
+            "Computer Networks": {
+                notes:
+                "A computer network connects devices so that they can communicate and share resources.",
+                summary:
+                "Networks allow computers and other devices to communicate and share resources."
+            },
+
+            "Internet": {
+                notes:
+                "The internet is a global network of interconnected computer networks. It supports services such as websites, email and online communication.",
+                summary:
+                "The internet connects computers and networks around the world."
+            },
+
+            "Cybersecurity": {
+                notes:
+                "Cybersecurity involves protecting computers, networks and information from unauthorized access, damage and attacks.",
+                summary:
+                "Strong passwords, software updates and careful handling of links help protect digital information."
+            },
+
+            "Programming": {
+                notes:
+                "Programming is the process of creating instructions that computers can execute. Common programming languages include Python, JavaScript and Java.",
+                summary:
+                "Programming uses logical instructions to make computers perform tasks."
             }
 
+        }
+    },
+
+
+    "Siswati": {
+        icon: "🗣️",
+        description: "SiSwati language and communication",
+        topics: {
+
+            "Grammar": {
+                notes:
+                "Grammar is the system of rules used to form correct sentences. It includes word classes, sentence structure and agreement.",
+                summary:
+                "Grammar helps speakers and writers communicate clearly and correctly."
+            },
+
+            "Nouns": {
+                notes:
+                "A noun is a word used to name a person, place, animal, object or idea. SiSwati nouns belong to different noun classes.",
+                summary:
+                "Nouns name people, places, things and ideas."
+            },
+
+            "Verbs": {
+                notes:
+                "Verbs express actions, states or events. They are important parts of sentences because they tell us what happens.",
+                summary:
+                "Verbs describe actions or states."
+            },
+
+            "Sentence Construction": {
+                notes:
+                "A sentence normally communicates a complete idea. Good sentence construction requires appropriate word order and grammatical agreement.",
+                summary:
+                "Correct sentence structure makes communication clear."
+            },
+
+            "Comprehension": {
+                notes:
+                "Comprehension involves reading a passage carefully and identifying its main ideas, supporting details and meanings.",
+                summary:
+                "Good comprehension requires understanding both the information and meaning of a passage."
+            },
+
+            "Oral Communication": {
+                notes:
+                "Oral communication involves communicating ideas through speech. Effective communication requires clear pronunciation, appropriate language and listening.",
+                summary:
+                "Effective speaking combines clear language with good listening."
+            }
+
+        }
+    },
+
+
+    "English": {
+        icon: "📖",
+        description: "English language and literature",
+        topics: {
+
+            "Parts of Speech": {
+                notes:
+                "The main parts of speech include nouns, pronouns, verbs, adjectives, adverbs, prepositions, conjunctions and interjections.",
+                summary:
+                "Parts of speech describe the roles words play in sentences."
+            },
+
+            "Tenses": {
+                notes:
+                "Tenses show the time of an action. Common forms include present, past and future.",
+                summary:
+                "Tense tells the reader or listener when an action happens."
+            },
+
+            "Comprehension": {
+                notes:
+                "Comprehension requires identifying the main idea, supporting details, meanings and conclusions in a passage.",
+                summary:
+                "Read carefully, identify important information and answer using evidence from the passage."
+            },
+
+            "Essay Writing": {
+                notes:
+                "A good essay normally has an introduction, developed body paragraphs and a conclusion. Ideas should be logically organized.",
+                summary:
+                "Plan your argument, organize paragraphs and proofread your work."
+            },
+
+            "Figures of Speech": {
+                notes:
+                "Figures of speech use language creatively. Examples include simile, metaphor, personification, hyperbole and irony.",
+                summary:
+                "Figures of speech create emphasis, imagery and deeper meaning."
+            },
+
+            "Literature": {
+                notes:
+                "Literature can be studied through characters, setting, plot, themes, conflict, language and the writer's techniques.",
+                summary:
+                "Literary analysis explains how writers use characters, events and language to communicate ideas."
+            }
+
+        }
+    },
+
+
+    "Mathematics": {
+        icon: "📐",
+        description: "Mathematics and problem solving",
+        topics: {
+
+            "Number": {
+                notes:
+                "Number work includes integers, fractions, decimals, percentages, ratios and operations.",
+                summary:
+                "Number skills form the foundation for many areas of mathematics."
+            },
+
+            "Algebra": {
+                notes:
+                "Algebra uses letters and symbols to represent unknown values. Expressions can be simplified and equations solved using mathematical rules.",
+                summary:
+                "Algebra represents unknown quantities and relationships using symbols."
+            },
+
+            "Geometry": {
+                notes:
+                "Geometry studies shapes, sizes, angles, positions and properties of figures.",
+                summary:
+                "Geometry deals with the properties and relationships of shapes."
+            },
+
+            "Mensuration": {
+                notes:
+                "Mensuration involves calculating measurements such as perimeter, area, surface area and volume.",
+                summary:
+                "Use appropriate formulas to calculate measurements of geometric figures."
+            },
+
+            "Trigonometry": {
+                notes:
+                "Trigonometry studies relationships between angles and sides of triangles. In right-angled triangles, sine, cosine and tangent are commonly used.",
+                summary:
+                "SOH-CAH-TOA helps relate sides and angles in right-angled triangles."
+            },
+
+            "Statistics": {
+                notes:
+                "Statistics involves collecting, organizing, presenting and interpreting data. Measures include mean, median, mode and range.",
+                summary:
+                "Statistics helps us understand and interpret numerical data."
+            },
+
+            "Probability": {
+                notes:
+                "Probability measures how likely an event is to occur. It ranges from 0, meaning impossible, to 1, meaning certain.",
+                summary:
+                "Probability describes the likelihood of events."
+            }
+
+        }
+    },
+
+
+    "Religious Education": {
+        icon: "✝️",
+        description: "Religious Education",
+        topics: {
+
+            "Creation": {
+                notes:
+                "Creation accounts explore beliefs about the origin of the world, humanity and humanity's responsibilities toward creation.",
+                summary:
+                "Creation teachings often focus on God, humanity and responsibility for the world."
+            },
+
+            "The Life of Jesus": {
+                notes:
+                "The study of Jesus includes his teachings, relationships, miracles, death and resurrection as presented in the Christian scriptures.",
+                summary:
+                "Jesus' life and teachings form a central part of Christianity."
+            },
+
+            "The Early Church": {
+                notes:
+                "The early Christian church developed after Jesus' resurrection. The apostles played an important role in spreading Christianity.",
+                summary:
+                "The apostles helped establish and spread the early Christian movement."
+            },
+
+            "Christian Ethics": {
+                notes:
+                "Christian ethics considers how beliefs should influence choices, relationships and behaviour.",
+                summary:
+                "Christian ethics connects religious beliefs with everyday moral decisions."
+            },
+
+            "Religion and Society": {
+                notes:
+                "Religion can influence values, family life, community relationships and responses to social issues.",
+                summary:
+                "Religious beliefs can influence individual and community behaviour."
+            }
+
+        }
+    },
+
+
+    "Biology": {
+        icon: "🧬",
+        description: "Life sciences",
+        topics: {
+
+            "Cells": {
+                notes:
+                "The cell is the basic structural and functional unit of living organisms. Plant and animal cells contain structures with specialized functions.",
+                summary:
+                "Cells are the basic units from which living organisms are built."
+            },
+
+            "Nutrition": {
+                notes:
+                "Nutrition is the process by which organisms obtain and use nutrients. Humans require carbohydrates, proteins, fats, vitamins, minerals, water and fibre.",
+                summary:
+                "A balanced diet supplies the nutrients needed for health and growth."
+            },
+
+            "Respiration": {
+                notes:
+                "Respiration releases energy from food. Aerobic respiration uses oxygen while anaerobic respiration occurs without oxygen.",
+                summary:
+                "Respiration provides usable energy for life processes."
+            },
+
+            "Photosynthesis": {
+                notes:
+                "Photosynthesis is the process by which green plants use light energy to make glucose from carbon dioxide and water.",
+                summary:
+                "Plants use light energy to manufacture food during photosynthesis."
+            },
+
+            "Human Reproduction": {
+                notes:
+                "Human reproduction involves the male and female reproductive systems and the processes leading to fertilization and development.",
+                summary:
+                "Reproduction allows humans to produce offspring."
+            },
+
+            "Ecology": {
+                notes:
+                "Ecology studies relationships between organisms and their environment. Concepts include populations, communities, habitats and food chains.",
+                summary:
+                "Ecology explains how organisms interact with one another and their environment."
+            },
+
+            "Genetics": {
+                notes:
+                "Genetics is the study of heredity and variation. Genes carry information that influences characteristics.",
+                summary:
+                "Genetics explains how characteristics are inherited and why organisms vary."
+            }
+
+        }
+    },
+
+
+    "Agriculture": {
+        icon: "🌱",
+        description: "Crop and livestock production",
+        topics: {
+
+            "Soil Science": {
+                notes:
+                "Soil provides plants with support, water and mineral nutrients. Soil properties influence crop growth.",
+                summary:
+                "Healthy soil is important for successful crop production."
+            },
+
+            "Crop Production": {
+                notes:
+                "Crop production involves land preparation, planting, crop maintenance, harvesting and post-harvest handling.",
+                summary:
+                "Successful crop production requires appropriate management throughout the crop's life cycle."
+            },
+
+            "Plant Nutrition": {
+                notes:
+                "Plants require nutrients such as nitrogen, phosphorus and potassium. Organic and inorganic fertilizers can supply nutrients.",
+                summary:
+                "Plant nutrients support healthy growth and development."
+            },
+
+            "Livestock Production": {
+                notes:
+                "Livestock production involves keeping animals for products such as meat, milk, eggs, fibre and income.",
+                summary:
+                "Good livestock management includes feeding, housing, breeding and disease control."
+            },
+
+            "Pests and Diseases": {
+                notes:
+                "Agricultural pests and diseases can reduce crop yields. Management may involve cultural, biological, physical and chemical methods.",
+                summary:
+                "Pest and disease management protects crops and improves yields."
+            },
+
+            "Agricultural Economics": {
+                notes:
+                "Agricultural economics examines the production, distribution and marketing of agricultural goods.",
+                summary:
+                "Farmers make economic decisions about resources, costs, production and markets."
+            }
+
+        }
+    },
+
+
+    "Economics": {
+        icon: "💰",
+        description: "Economic principles and activities",
+        topics: {
+
+            "Basic Economic Concepts": {
+                notes:
+                "Economics studies how people and societies use limited resources to satisfy unlimited wants.",
+                summary:
+                "Scarcity means resources are limited while human wants are numerous."
+            },
+
+            "Demand": {
+                notes:
+                "Demand refers to the quantity of a good or service consumers are willing and able to buy at different prices.",
+                summary:
+                "Demand describes consumers' willingness and ability to purchase goods or services."
+            },
+
+            "Supply": {
+                notes:
+                "Supply refers to the quantity producers are willing and able to offer for sale at different prices.",
+                summary:
+                "Supply describes producers' willingness and ability to sell goods or services."
+            },
+
+            "Markets": {
+                notes:
+                "A market is a system in which buyers and sellers interact to exchange goods and services.",
+                summary:
+                "Markets connect buyers and sellers."
+            },
+
+            "Inflation": {
+                notes:
+                "Inflation is a sustained increase in the general price level of goods and services over time.",
+                summary:
+                "Inflation reduces the purchasing power of money when incomes do not rise at the same rate."
+            },
+
+            "Unemployment": {
+                notes:
+                "Unemployment occurs when people who are able and willing to work cannot find suitable employment.",
+                summary:
+                "Unemployment means available workers cannot find employment."
+            },
+
+            "Economic Growth": {
+                notes:
+                "Economic growth refers to an increase in the production of goods and services in an economy over time.",
+                summary:
+                "Economic growth represents an expansion in an economy's productive output."
+            }
+
+        }
+    },
+
+
+    "Geography": {
+        icon: "🌍",
+        description: "Physical and human geography",
+        topics: {
+
+            "Map Work": {
+                notes:
+                "Map work involves interpreting symbols, scales, directions, coordinates and physical features represented on maps.",
+                summary:
+                "Maps represent places and features using symbols and scale."
+            },
+
+            "Weather and Climate": {
+                notes:
+                "Weather describes atmospheric conditions at a particular time and place. Climate describes long-term patterns.",
+                summary:
+                "Weather is short-term atmospheric condition; climate is the long-term pattern."
+            },
+
+            "Rivers": {
+                notes:
+                "Rivers are flowing bodies of water. River processes include erosion, transportation and deposition.",
+                summary:
+                "Rivers shape landscapes through erosion, transportation and deposition."
+            },
+
+            "Population": {
+                notes:
+                "Population geography studies the distribution, density, growth and movement of people.",
+                summary:
+                "Population patterns are influenced by physical, economic and social factors."
+            },
+
+            "Settlement": {
+                notes:
+                "Settlements are places where people live. Factors influencing settlement include water supply, relief, transport and economic opportunities.",
+                summary:
+                "Physical and human factors influence where settlements develop."
+            },
+
+            "Agriculture": {
+                notes:
+                "Agricultural geography examines where farming occurs and the physical, economic and social factors affecting agriculture.",
+                summary:
+                "Agriculture is influenced by climate, soil, relief, markets, labour and technology."
+            },
+
+            "Environmental Management": {
+                notes:
+                "Environmental management involves using natural resources responsibly while reducing environmental damage.",
+                summary:
+                "Sustainable management aims to meet present needs while protecting resources for the future."
+            }
+
+        }
+    },
+
+
+    "History": {
+        icon: "🏛️",
+        description: "Past events, people and societies",
+        topics: {
+
+            "Historical Sources": {
+                notes:
+                "Historical sources provide evidence about the past. They can include written records, photographs, artefacts, oral accounts and buildings.",
+                summary:
+                "Historians use evidence from different sources to investigate the past."
+            },
+
+            "Pre-colonial Africa": {
+                notes:
+                "African societies developed diverse political, economic and social systems before European colonial rule.",
+                summary:
+                "Pre-colonial Africa contained many organized societies, kingdoms and communities."
+            },
+
+            "Colonialism": {
+                notes:
+                "Colonialism involved the control of territories and peoples by external powers. It affected political, economic and social systems.",
+                summary:
+                "Colonial rule changed many African political, economic and social structures."
+            },
+
+            "Industrial Revolution": {
+                notes:
+                "The Industrial Revolution involved major changes in production, technology and transportation, beginning in Britain and spreading elsewhere.",
+                summary:
+                "Industrialization transformed production, work, cities and transportation."
+            },
+
+            "World War I": {
+                notes:
+                "World War I was a major international conflict from 1914 to 1918 involving major alliances and many countries.",
+                summary:
+                "The war caused major political, economic and social changes."
+            },
+
+            "World War II": {
+                notes:
+                "World War II was a global conflict from 1939 to 1945. It involved many countries and resulted in major changes to international relations.",
+                summary:
+                "World War II reshaped international politics and contributed to the creation of new international institutions."
+            },
+
+            "African Independence": {
+                notes:
+                "African independence movements sought political self-government and an end to colonial rule.",
+                summary:
+                "Decolonization resulted in many African territories becoming independent states."
+            }
+
+        }
+    }
+
+};
+
+
+/* =========================================================
+   DISPLAY SUBJECTS
+   ========================================================= */
+
+const subjectGrid =
+    document.getElementById("subjectGrid");
+
+function displaySubjects(filter = "") {
+
+    subjectGrid.innerHTML = "";
+
+    Object.entries(subjects).forEach(
+        ([name, subject]) => {
+
+            if (
+                filter &&
+                !name.toLowerCase().includes(
+                    filter.toLowerCase()
+                )
+            ) {
+                return;
+            }
+
+            const card =
+                document.createElement("div");
+
+            card.className = "subject";
+
+            card.innerHTML = `
+                <div class="subject-icon">
+                    ${subject.icon}
+                </div>
+
+                <h3>${name}</h3>
+
+                <p>${subject.description}</p>
+
+                <br>
+
+                <span>
+                    ${Object.keys(subject.topics).length}
+                    topics
+                </span>
+            `;
+
+            card.onclick = () =>
+                showTopics(name);
+
+            subjectGrid.appendChild(card);
+        }
+    );
+}
+
+displaySubjects();
+
+
+/* =========================================================
+   SHOW TOPICS
+   ========================================================= */
+
+function showTopics(subjectName) {
+
+    const subject =
+        subjects[subjectName];
+
+    document.getElementById(
+        "subjects"
+    ).style.display = "none";
+
+    document.getElementById(
+        "notesSection"
+    ).style.display = "none";
+
+    document.getElementById(
+        "topicSection"
+    ).style.display = "block";
+
+    document.getElementById(
+        "topicTitle"
+    ).textContent =
+        subject.icon + " " + subjectName;
+
+    document.getElementById(
+        "topicDescription"
+    ).textContent =
+        subject.description;
+
+    const grid =
+        document.getElementById("topicGrid");
+
+    grid.innerHTML = "";
+
+    Object.entries(subject.topics)
+        .forEach(([topic, data]) => {
+
+            const card =
+                document.createElement("div");
+
+            card.className = "topic";
+
+            card.innerHTML = `
+                <h3>${topic}</h3>
+
+                <p>
+                    ${data.summary}
+                </p>
+
+                <button class="btn">
+                    Read Notes
+                </button>
+            `;
+
+            card.querySelector("button")
+                .onclick = () =>
+                    showNote(
+                        subjectName,
+                        topic
+                    );
+
+            grid.appendChild(card);
+
         });
 
-    </script>
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* =========================================================
+   SHOW NOTE
+   ========================================================= */
+
+function showNote(subjectName, topic) {
+
+    const data =
+        subjects[subjectName]
+        .topics[topic];
+
+    document.getElementById(
+        "topicSection"
+    ).style.display = "none";
+
+    document.getElementById(
+        "notesSection"
+    ).style.display = "block";
+
+    document.getElementById(
+        "noteContainer"
+    ).innerHTML = `
+
+        <h2>${topic}</h2>
+
+        <p>
+            <strong>Subject:</strong>
+            ${subjectName}
+        </p>
+
+        <h3>📖 Notes</h3>
+
+        <p>
+            ${data.notes}
+        </p>
+
+        <div class="summary">
+
+            <h3>📝 Summary</h3>
+
+            <p>
+                ${data.summary}
+            </p>
+
+        </div>
+
+    `;
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* =========================================================
+   BACK TO SUBJECTS
+   ========================================================= */
+
+function showSubjects() {
+
+    document.getElementById(
+        "topicSection"
+    ).style.display = "none";
+
+    document.getElementById(
+        "notesSection"
+    ).style.display = "none";
+
+    document.getElementById(
+        "subjects"
+    ).style.display = "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* =========================================================
+   BACK TO TOPICS
+   ========================================================= */
+
+function showTopicsFromCurrent() {
+
+    document.getElementById(
+        "notesSection"
+    ).style.display = "none";
+
+    document.getElementById(
+        "topicSection"
+    ).style.display = "block";
+}
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+document.getElementById(
+    "search"
+).addEventListener(
+    "input",
+    function () {
+
+        const value =
+            this.value.trim();
+
+        displaySubjects(value);
+
+        if (value) {
+
+            const topicResults = [];
+
+            Object.entries(subjects)
+                .forEach(
+                    ([subjectName, subject]) => {
+
+                        Object.entries(
+                            subject.topics
+                        ).forEach(
+                            ([topic, data]) => {
+
+                                if (
+                                    topic
+                                        .toLowerCase()
+                                        .includes(
+                                            value.toLowerCase()
+                                        )
+                                ) {
+
+                                    topicResults.push({
+                                        subjectName,
+                                        topic,
+                                        data
+                                    });
+
+                                }
+
+                            }
+                        );
+
+                    }
+                );
+
+            if (topicResults.length) {
+
+                subjectGrid.innerHTML +=
+                    `<h2 style="grid-column:1/-1;margin-top:30px">
+                        Topic results
+                    </h2>`;
+
+                topicResults.forEach(result => {
+
+                    const card =
+                        document.createElement("div");
+
+                    card.className = "topic";
+
+                    card.innerHTML = `
+                        <h3>
+                            ${result.topic}
+                        </h3>
+
+                        <p>
+                            ${result.subjectName}
+                        </p>
+
+                        <button class="btn">
+                            Read Notes
+                        </button>
+                    `;
+
+                    card.querySelector("button")
+                        .onclick = () =>
+                            showNote(
+                                result.subjectName,
+                                result.topic
+                            );
+
+                    subjectGrid.appendChild(card);
+
+                });
+
+            }
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+document.getElementById(
+    "theme"
+).addEventListener(
+    "click",
+    function () {
+
+        document.body.classList.toggle(
+            "dark"
+        );
+
+        this.textContent =
+            document.body.classList.contains("dark")
+            ? "☀️"
+            : "🌙";
+
+    }
+);
+
+</script>
 
 </body>
-</html>
+    </html>
