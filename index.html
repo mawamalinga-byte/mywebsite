@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Mawa | Developer</title>
+    <title>Mawa.dev | Developer</title>
 
     <style>
         * {
@@ -14,20 +14,35 @@
             scroll-behavior: smooth;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #0f172a;
-            color: white;
-            line-height: 1.6;
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #ffffff;
+            --muted: #cbd5e1;
+            --blue: #38bdf8;
         }
 
-        /* Navigation */
+        body.light {
+            --bg: #f1f5f9;
+            --card: #ffffff;
+            --text: #0f172a;
+            --muted: #475569;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            transition: 0.3s;
+        }
+
+        /* NAVIGATION */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: #020617;
-            padding: 15px 8%;
+            padding: 15px 7%;
+            background: rgba(2, 6, 23, 0.95);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -35,13 +50,17 @@
         }
 
         nav h2 {
-            font-size: 22px;
+            color: white;
+        }
+
+        nav h2 span {
+            color: var(--blue);
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 25px;
+            gap: 20px;
         }
 
         nav a {
@@ -51,71 +70,90 @@
         }
 
         nav a:hover {
-            color: #38bdf8;
+            color: var(--blue);
         }
 
-        /* Hero */
+        #themeBtn,
+        #menuBtn {
+            border: none;
+            background: none;
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        #menuBtn {
+            display: none;
+        }
+
+        /* HERO */
         .hero {
             min-height: 100vh;
+            padding: 120px 20px 50px;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 100px 20px 40px;
             background: linear-gradient(135deg, #0f172a, #1e3a8a);
         }
 
+        .hero-content {
+            animation: fadeUp 1.2s ease;
+        }
+
         .hero h1 {
-            font-size: 55px;
+            font-size: clamp(40px, 8vw, 70px);
             margin-bottom: 15px;
         }
 
-        .hero span {
-            color: #38bdf8;
+        .hero h1 span {
+            color: var(--blue);
         }
 
         .hero p {
-            font-size: 20px;
-            max-width: 600px;
+            max-width: 650px;
             margin: auto;
-            color: #cbd5e1;
+            color: var(--muted);
+            font-size: 20px;
         }
 
         .btn {
             display: inline-block;
             margin-top: 25px;
-            padding: 12px 25px;
-            background: #38bdf8;
+            padding: 14px 25px;
+            background: var(--blue);
             color: #020617;
-            text-decoration: none;
             border-radius: 8px;
+            text-decoration: none;
             font-weight: bold;
+            transition: 0.3s;
         }
 
         .btn:hover {
-            background: #7dd3fc;
+            transform: translateY(-4px);
         }
 
-        /* Sections */
+        /* SECTIONS */
         section {
-            padding: 80px 8%;
+            padding: 90px 8%;
         }
 
         section h2 {
             text-align: center;
-            margin-bottom: 40px;
             font-size: 35px;
+            margin-bottom: 40px;
         }
 
-        /* About */
+        /* ABOUT */
         .about {
             max-width: 800px;
             margin: auto;
             text-align: center;
-            color: #cbd5e1;
+            color: var(--muted);
+            font-size: 18px;
         }
 
-        /* Skills */
+        /* SKILLS */
         .skills {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -123,84 +161,80 @@
         }
 
         .skill {
-            background: #1e293b;
-            padding: 25px;
-            border-radius: 12px;
+            background: var(--card);
+            padding: 30px;
+            border-radius: 15px;
             text-align: center;
             transition: 0.3s;
         }
 
         .skill:hover {
-            transform: translateY(-5px);
-            background: #334155;
+            transform: translateY(-8px);
         }
 
         .skill h3 {
-            color: #38bdf8;
+            color: var(--blue);
             margin-bottom: 10px;
         }
 
-        /* Projects */
+        .skill p {
+            color: var(--muted);
+        }
+
+        /* PROJECTS */
         .projects {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 25px;
         }
 
         .project {
-            background: #1e293b;
+            background: var(--card);
             padding: 25px;
-            border-radius: 12px;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-8px);
         }
 
         .project h3 {
-            color: #38bdf8;
+            color: var(--blue);
             margin-bottom: 10px;
         }
 
         .project p {
-            color: #cbd5e1;
-        }
-
-        /* Contact */
-        .contact {
-            max-width: 600px;
-            margin: auto;
-        }
-
-        .contact input,
-        .contact textarea {
-            width: 100%;
-            padding: 13px;
+            color: var(--muted);
             margin-bottom: 15px;
-            border: none;
-            border-radius: 7px;
-            background: #1e293b;
+        }
+
+        /* CONTACT */
+        .contact {
+            text-align: center;
+        }
+
+        .contact p {
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        /* WHATSAPP */
+        .whatsapp {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            background: #25d366;
             color: white;
-            font-size: 16px;
-        }
-
-        .contact textarea {
-            height: 130px;
-            resize: none;
-        }
-
-        .contact button {
-            width: 100%;
-            padding: 13px;
-            border: none;
-            border-radius: 7px;
-            background: #38bdf8;
-            font-size: 16px;
+            padding: 15px 20px;
+            border-radius: 50px;
+            text-decoration: none;
             font-weight: bold;
-            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            z-index: 999;
         }
 
-        .contact button:hover {
-            background: #7dd3fc;
-        }
-
-        /* Footer */
+        /* FOOTER */
         footer {
             text-align: center;
             padding: 25px;
@@ -208,22 +242,40 @@
             color: #94a3b8;
         }
 
-        /* Mobile */
-        @media (max-width: 600px) {
-            nav {
-                padding: 15px 5%;
+        /* ANIMATION */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* MOBILE */
+        @media (max-width: 700px) {
+
+            #menuBtn {
+                display: block;
             }
 
             nav ul {
-                gap: 10px;
+                position: absolute;
+                top: 65px;
+                left: 0;
+                width: 100%;
+                background: #020617;
+                display: none;
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
             }
 
-            nav a {
-                font-size: 13px;
-            }
-
-            .hero h1 {
-                font-size: 40px;
+            nav ul.show {
+                display: flex;
             }
 
             .hero p {
@@ -235,11 +287,16 @@
 
 <body>
 
-    <!-- Navigation -->
+    <!-- NAVIGATION -->
     <nav>
-        <h2>Mawa.dev</h2>
+        <h2>Mawa<span>.dev</span></h2>
 
-        <ul>
+        <div>
+            <button id="themeBtn">🌙</button>
+            <button id="menuBtn">☰</button>
+        </div>
+
+        <ul id="navLinks">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
@@ -248,151 +305,208 @@
         </ul>
     </nav>
 
-    <!-- Home -->
+
+    <!-- HOME -->
     <section class="hero" id="home">
-        <div>
+        <div class="hero-content">
+
             <h1>Hello, I'm <span>Mawa</span></h1>
 
             <p>
-                I'm a young programmer learning how to build websites,
-                applications and cool technology.
+                A young developer from Eswatini building websites,
+                applications and learning new technologies.
             </p>
 
-            <a href="#projects" class="btn">View My Projects</a>
+            <a href="#projects" class="btn">
+                View My Projects
+            </a>
+
         </div>
     </section>
 
-    <!-- About -->
+
+    <!-- ABOUT -->
     <section id="about">
+
         <h2>About Me</h2>
 
         <div class="about">
             <p>
-                Welcome to my website. I'm passionate about programming
-                and technology. I'm currently learning HTML, CSS,
-                JavaScript and Python while building my own projects.
+                I'm passionate about programming and technology.
+                I enjoy learning how software works and building
+                my own projects from scratch.
+            </p>
+
+            <br>
+
+            <p>
+                My goal is to keep improving my programming skills
+                and build useful technology.
             </p>
         </div>
+
     </section>
 
-    <!-- Skills -->
+
+    <!-- SKILLS -->
     <section id="skills">
+
         <h2>My Skills</h2>
 
         <div class="skills">
 
             <div class="skill">
                 <h3>HTML</h3>
-                <p>Building the structure of websites.</p>
+                <p>Website structure</p>
             </div>
 
             <div class="skill">
                 <h3>CSS</h3>
-                <p>Designing websites and making them responsive.</p>
+                <p>Website design</p>
             </div>
 
             <div class="skill">
                 <h3>JavaScript</h3>
-                <p>Adding interaction and functionality.</p>
+                <p>Website functionality</p>
             </div>
 
             <div class="skill">
                 <h3>Python</h3>
-                <p>Learning programming and automation.</p>
+                <p>Programming & automation</p>
+            </div>
+
+            <div class="skill">
+                <h3>Termux</h3>
+                <p>Linux tools on Android</p>
+            </div>
+
+            <div class="skill">
+                <h3>GitHub</h3>
+                <p>Code hosting</p>
             </div>
 
         </div>
+
     </section>
 
-    <!-- Projects -->
+
+    <!-- PROJECTS -->
     <section id="projects">
+
         <h2>My Projects</h2>
 
         <div class="projects">
 
             <div class="project">
-                <h3>Project 1</h3>
+                <h3>🌐 Mawa.dev</h3>
                 <p>
-                    My first website project built using HTML and CSS.
+                    My personal developer portfolio website.
+                </p>
+                <a href="#home" class="btn">Open</a>
+            </div>
+
+            <div class="project">
+                <h3>🤖 Python Projects</h3>
+                <p>
+                    Programming projects created while learning Python.
                 </p>
             </div>
 
             <div class="project">
-                <h3>Project 2</h3>
+                <h3>📱 Android Projects</h3>
                 <p>
-                    A JavaScript project that makes a website interactive.
-                </p>
-            </div>
-
-            <div class="project">
-                <h3>Project 3</h3>
-                <p>
-                    A Python project that I built while learning programming.
+                    Projects and experiments created using Android
+                    and Termux.
                 </p>
             </div>
 
         </div>
+
     </section>
 
-    <!-- Contact -->
+
+    <!-- CONTACT -->
     <section id="contact">
+
         <h2>Contact Me</h2>
 
         <div class="contact">
 
-            <form id="contactForm">
+            <p>
+                Want to contact me or talk about a project?
+            </p>
 
-                <input
-                    type="text"
-                    id="name"
-                    placeholder="Your Name"
-                    required
-                >
-
-                <input
-                    type="email"
-                    id="email"
-                    placeholder="Your Email"
-                    required
-                >
-
-                <textarea
-                    id="message"
-                    placeholder="Your Message"
-                    required
-                ></textarea>
-
-                <button type="submit">
-                    Send Message
-                </button>
-
-            </form>
+            <!-- Replace the number with your WhatsApp number -->
+            <a
+                class="btn"
+                href="https://wa.me/268XXXXXXXX"
+                target="_blank">
+                Message Me on WhatsApp
+            </a>
 
         </div>
+
     </section>
 
-    <!-- Footer -->
+
+    <!-- WHATSAPP FLOATING BUTTON -->
+
+    <!-- Replace 268XXXXXXXX with your WhatsApp number -->
+    <a
+        class="whatsapp"
+        href="https://wa.me/268XXXXXXXX"
+        target="_blank">
+        WhatsApp
+    </a>
+
+
+    <!-- FOOTER -->
     <footer>
-        <p>© 2026 Mawa.dev | Built with HTML, CSS & JavaScript</p>
+        <p>
+            © 2026 Mawa.dev | Built with HTML, CSS & JavaScript
+        </p>
     </footer>
 
-    <!-- JavaScript -->
+
+    <!-- JAVASCRIPT -->
     <script>
 
-        // Contact form
-        document.getElementById("contactForm").addEventListener("submit", function(event) {
+        // MOBILE MENU
 
-            event.preventDefault();
+        const menuBtn = document.getElementById("menuBtn");
+        const navLinks = document.getElementById("navLinks");
 
-            const name = document.getElementById("name").value;
-
-            alert("Thanks, " + name + "! Your message has been received.");
-
-            document.getElementById("contactForm").reset();
+        menuBtn.addEventListener("click", function () {
+            navLinks.classList.toggle("show");
         });
 
-        // Welcome message
-        console.log("Welcome to Mawa.dev!");
+
+        // CLOSE MENU AFTER CLICKING A LINK
+
+        document.querySelectorAll("#navLinks a").forEach(function(link) {
+
+            link.addEventListener("click", function() {
+                navLinks.classList.remove("show");
+            });
+
+        });
+
+
+        // DARK / LIGHT MODE
+
+        const themeBtn = document.getElementById("themeBtn");
+
+        themeBtn.addEventListener("click", function() {
+
+            document.body.classList.toggle("light");
+
+            if (document.body.classList.contains("light")) {
+                themeBtn.textContent = "☀️";
+            } else {
+                themeBtn.textContent = "🌙";
+            }
+
+        });
 
     </script>
 
