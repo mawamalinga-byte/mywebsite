@@ -32,6 +32,15 @@ section{padding:55px 6%}.title{text-align:center;font-size:32px;margin-bottom:10
 footer{background:#020617;color:#94a3b8;text-align:center;padding:28px}
 .hidden{display:none!important}
 @media(max-width:700px){section{padding:45px 5%}}
+
+.termgrid{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 18px}
+.term{padding:7px 11px;border:1px solid var(--border);border-radius:20px;font-size:14px;background:var(--card)}
+.study-box{margin:20px 0;padding:18px;background:rgba(37,99,235,.08);border-left:5px solid var(--primary);border-radius:9px}
+.study-box h3{margin-top:0!important}
+.visual{margin:22px 0;padding:16px;border:1px solid var(--border);border-radius:12px;background:var(--card);overflow:hidden}
+.visual h3{margin-top:0!important;color:var(--primary)}
+.chart{width:100%;max-width:720px;height:230px;display:block;margin:auto}
+.qbox{padding:13px;margin:9px 0;border:1px solid var(--border);border-radius:9px}
 </style>
 </head>
 <body>
@@ -1092,20 +1101,48 @@ function showTopics(name){
     window.scrollTo({top:0,behavior:"smooth"});
 }
 
+function makeTerms(topic){
+ const stop=new Set(["and","the","of","to","in","for","a","an","with","on"]);
+ return topic.split(/\s+/).map(x=>x.replace(/[^A-Za-z0-9-]/g,""))
+  .filter(x=>x.length>3&&!stop.has(x.toLowerCase())).slice(0,7);
+}
+function makeExample(subject,topic){
+ const t=topic.toLowerCase();
+ if(subject==="Mathematics"&&t.includes("statistics"))return "For 3, 5, 5, 7, 10: mean = 30 ÷ 5 = 6, median = 5, mode = 5 and range = 7.";
+ if(subject==="Mathematics"&&t.includes("algebra"))return "For y = 2x + 1, when x = 3, y = 7. The gradient is 2 and the y-intercept is 1.";
+ if(subject==="Mathematics"&&t.includes("trigonometry"))return "If opposite = 6 and hypotenuse = 10, then sin θ = 6/10 = 0.6, so θ = sin⁻¹(0.6).";
+ if(subject==="Economics"&&t.includes("demand"))return "When the price of a product falls, quantity demanded generally rises, other things being equal.";
+ if(subject==="Biology"&&t.includes("nutrition"))return "Photosynthesis can be represented by: carbon dioxide + water → glucose + oxygen, in the presence of light and chlorophyll.";
+ if(subject==="Biology"&&t.includes("ecosystem"))return "A simple food chain is grass → grasshopper → frog → snake. Energy is transferred between trophic levels.";
+ if(subject==="ICT"&&t.includes("spreadsheet"))return "=AVERAGE(B2:B11) calculates the mean of values in cells B2 through B11.";
+ if(subject==="Agriculture"&&t.includes("soil"))return "Adding suitable organic matter can improve soil structure and contribute nutrients as it decomposes.";
+ return "Apply the definition or process to a real situation, then explain the result using the key terms from this topic.";
+}
+function makeVisual(subject,topic){
+ const t=topic.toLowerCase();
+ if(subject==="Mathematics"&&t.includes("statistics"))return `<div class="visual"><h3>📊 Example Bar Graph</h3><svg class="chart" viewBox="0 0 700 230"><line x1="70" y1="195" x2="660" y2="195" stroke="currentColor" stroke-width="2"/><line x1="70" y1="195" x2="70" y2="20" stroke="currentColor" stroke-width="2"/><rect x="120" y="120" width="70" height="75" fill="#60a5fa"/><rect x="250" y="75" width="70" height="120" fill="#60a5fa"/><rect x="380" y="100" width="70" height="95" fill="#60a5fa"/><rect x="510" y="45" width="70" height="150" fill="#60a5fa"/><text x="130" y="215">A</text><text x="260" y="215">B</text><text x="390" y="215">C</text><text x="520" y="215">D</text></svg><p class="muted">Label axes and use an appropriate scale in an examination.</p></div>`;
+ if(subject==="Mathematics"&&t.includes("algebra"))return `<div class="visual"><h3>📈 Straight-line Graph</h3><svg class="chart" viewBox="0 0 700 230"><line x1="70" y1="195" x2="660" y2="195" stroke="currentColor" stroke-width="2"/><line x1="70" y1="195" x2="70" y2="20" stroke="currentColor" stroke-width="2"/><line x1="90" y1="180" x2="620" y2="45" stroke="#2563eb" stroke-width="4"/><text x="625" y="215">x</text><text x="48" y="28">y</text></svg><p class="muted">For y = mx + c, m is the gradient and c is the y-intercept.</p></div>`;
+ if(subject==="Economics"&&t.includes("demand"))return `<div class="visual"><h3>📉 Demand and Supply</h3><svg class="chart" viewBox="0 0 700 230"><line x1="70" y1="195" x2="660" y2="195" stroke="currentColor" stroke-width="2"/><line x1="70" y1="195" x2="70" y2="20" stroke="currentColor" stroke-width="2"/><line x1="100" y1="40" x2="610" y2="175" stroke="#2563eb" stroke-width="4"/><line x1="100" y1="175" x2="610" y2="40" stroke="#16a34a" stroke-width="4"/><circle cx="355" cy="108" r="6" fill="#dc2626"/><text x="365" y="100">Equilibrium</text><text x="615" y="215">Quantity</text><text x="15" y="28">Price</text></svg><p class="muted">Label demand, supply, price, quantity and equilibrium clearly.</p></div>`;
+ if(subject==="Biology"&&t.includes("ecosystem"))return `<div class="visual"><h3>🌿 Example Food Chain</h3><div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;align-items:center;font-size:18px;padding:20px"><span>🌱 Grass</span><b>→</b><span>🦗 Grasshopper</span><b>→</b><span>🐸 Frog</span><b>→</b><span>🐍 Snake</span></div></div>`;
+ return "";
+}
 function showNote(subject,topic){
-    const data=subjects[subject].topics[topic];
-    topicsSection.classList.add("hidden");
-    notesSection.classList.remove("hidden");
-    document.getElementById("note").innerHTML=`
-      <h2>${topic}</h2>
-      <p class="muted"><strong>Subject:</strong> ${subject}</p>
-      <h3>📖 Notes</h3>
-      <p>${data.notes}</p>
-      <div class="summary"><h3>📝 Summary</h3><p>${data.summary}</p></div>
-      <h3>✏️ Revision Questions</h3>
-      ${data.questions.map((q,i)=>`<div class="q"><strong>${i+1}.</strong> ${q}</div>`).join("")}
-    `;
-    window.scrollTo({top:0,behavior:"smooth"});
+ const data=subjects[subject].topics[topic];
+ const terms=makeTerms(topic);
+ topicsSection.classList.add("hidden");
+ notesSection.classList.remove("hidden");
+ document.getElementById("note").innerHTML=`
+  <h2>${topic}</h2><p class="muted"><strong>Subject:</strong> ${subject}</p>
+  <h3>📖 Detailed Notes</h3><p>${data.notes}</p>
+  ${makeVisual(subject,topic)}
+  <h3>🔑 Key Terms</h3><div class="termgrid">${terms.map(x=>`<span class="term">${x}</span>`).join("")}</div>
+  <div class="study-box"><h3>💡 Example / Application</h3><p>${makeExample(subject,topic)}</p></div>
+  <div class="summary"><h3>📝 Summary</h3><p>${data.summary}</p></div>
+  <h3>✏️ Revision Questions</h3>
+  <div class="qbox">1. Define or describe the main ideas in <strong>${topic}</strong>.</div>
+  <div class="qbox">2. Explain two important points you should know about <strong>${topic}</strong>.</div>
+  <div class="qbox">3. Apply your knowledge of <strong>${topic}</strong> to an examination-style situation.</div>`;
+ window.scrollTo({top:0,behavior:"smooth"});
 }
 
 function backTopics(){
